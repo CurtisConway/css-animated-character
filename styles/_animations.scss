@@ -1,0 +1,120 @@
+@keyframes idle {
+  0% {
+    --bodyPosition: 0, 0;
+    --headRotation: 0deg;
+
+    --leftArmRotation: 30deg;
+    --leftForearmRotation: -90deg;
+
+    --rightArmRotation: 30deg;
+    --rightForearmRotation: -90deg;
+
+    --leftLegRotation: 0deg;
+    --leftCalfRotation: 0deg;
+    --leftFootRotation: 0deg;
+
+    --rightLegRotation: 0deg;
+    --rightCalfRotation: 0deg;
+    --rightFootRotation: 0deg;
+  }
+
+  50% {
+    --bodyPosition: 0, 1.5%;
+    --headRotation: 2.5deg;
+
+    --leftArmRotation: 25deg;
+    --leftForearmRotation: -90deg;
+
+    --rightArmRotation: 25deg;
+    --rightForearmRotation: -90deg;
+
+    --leftLegRotation: -5deg;
+    --leftCalfRotation: 10deg;
+    --leftFootRotation: -5deg;
+
+    --rightLegRotation: -5deg;
+    --rightCalfRotation: 10deg;
+    --rightFootRotation: -5deg;
+  }
+
+  100% {
+    --bodyPosition: 0, 0;
+    --headRotation: 0deg;
+
+    --leftArmRotation: 30deg;
+    --leftForearmRotation: -90deg;
+
+    --rightArmRotation: 30deg;
+    --rightForearmRotation: -90deg;
+
+    --leftLegRotation: 0deg;
+    --leftCalfRotation: 0deg;
+    --leftFootRotation: 0deg;
+
+    --rightLegRotation: 0deg;
+    --rightCalfRotation: 0deg;
+    --rightFootRotation: 0deg;
+  }
+}
+
+@keyframes walk {
+  0% {
+    --bodyPosition: 0, 0%;
+    --bodyRotation: 3deg;
+    --headRotation: 0deg;
+
+    --leftArmRotation: -15deg;
+    --leftForearmRotation: -75deg;
+
+    --rightArmRotation: 15deg;
+    --rightForearmRotation: -75deg;
+
+    --leftLegRotation: 30deg;
+    --leftCalfRotation: 0deg;
+    --leftFootRotation: 0deg;
+
+    --rightLegRotation: -30deg;
+    --rightCalfRotation: 20deg;
+    --rightFootRotation: -20deg;
+  }
+
+  50% {
+    --bodyPosition: 0, 1.5%;
+    --bodyRotation: -3deg;
+    --headRotation: 2.5deg;
+
+    --leftArmRotation: 45deg;
+    --leftForearmRotation: -75deg;
+
+    --rightArmRotation: -25deg;
+    --rightForearmRotation: -75deg;
+
+    --leftLegRotation: -30deg;
+    --leftCalfRotation: 20deg;
+    --leftFootRotation: -20deg;
+
+    --rightLegRotation: 30deg;
+    --rightCalfRotation: 0deg;
+    --rightFootRotation: 0deg;
+  }
+
+  100% {
+    --bodyPosition: 0, 0%;
+    --bodyRotation: 3deg;
+    --headRotation: 0deg;
+
+    --leftArmRotation: -15deg;
+    --leftForearmRotation: -75deg;
+
+    --rightArmRotation: 15deg;
+    --rightForearmRotation: -75deg;
+
+    --leftLegRotation: 30deg;
+    --leftCalfRotation: 0deg;
+    --leftFootRotation: 0deg;
+
+    --rightLegRotation: -30deg;
+    --rightCalfRotation: 20deg;
+    --rightFootRotation: -20deg;
+  }
+}

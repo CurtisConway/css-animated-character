@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS Animated Character</title>
+    <link rel="stylesheet" href="styles/character.scss">
+</head>
+<body style="background:#242424;">
+<div class="character idle">
+    <div class="frame">
+        <div class="body">
+            <div class="arm left">
+                <div class="bicep">
+                    <div class="shoulder"></div>
+                </div>
+                <div class="forearm">
+                    <div class="elbow"></div>
+                    <div class="hand"></div>
+                </div>
+            </div>
+            <div class="arm right">
+                <div class="bicep">
+                    <div class="shoulder"></div>
+                </div>
+                <div class="forearm">
+                    <div class="elbow"></div>
+                    <div class="hand"></div>
+                </div>
+            </div>
+            <div class="torso">
+            </div>
+            <div class="head"></div>
+            <div class="waist">
+                <div class="hips"></div>
+                <div class="leg left">
+                    <div class="thigh">
+                        <div class="pelvis"></div>
+                    </div>
+                    <div class="calf">
+                        <div class="knee"></div>
+                        <div class="foot">
+                            <div class="ankle"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="leg right">
+                    <div class="thigh">
+                        <div class="pelvis"></div>
+                    </div>
+                    <div class="calf">
+                        <div class="knee"></div>
+                        <div class="foot">
+                            <div class="ankle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const character = document.querySelector('.character');
+    const keysDown = {};
+
+    function goingLeft() {
+        return keysDown['a'] || keysDown['ArrowLeft'];
+    }
+
+    function goingRight() {
+        return keysDown['d'] || keysDown['ArrowRight'];
+    }
+
+    document.addEventListener('keydown', (event) => {
+        keysDown[event.key] = true;
+        if(goingLeft() || goingRight()) {
+            character.classList.add('walk');
+            character.classList.remove('idle');
+        }
+
+        if(goingRight()) {
+            character.classList.remove('backwards');
+        }
+
+        if(goingLeft()) {
+            character.classList.add('backwards');
+        }
+    });
+
+    document.addEventListener('keyup', (event) => {
+        keysDown[event.key] = false;
+        if (!goingLeft() && !goingRight()) {
+            character.classList.remove('walk');
+            character.classList.add('idle');
+        }
+        if(!goingLeft() && goingRight()) {
+            character.classList.remove('backwards');
+        }
+    });
+</script>
+</body>
+</html>

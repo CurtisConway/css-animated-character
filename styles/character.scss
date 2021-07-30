@@ -1,0 +1,267 @@
+@import '_variables.scss';
+@import '_animations.scss';
+
+.character {
+  width:250px;
+  transform-origin:center center;
+  transition:transform .1s linear;
+  margin:0 auto;
+
+  &.backwards {
+    transform:rotateY(180deg);
+  }
+
+  * {
+    transition:transform .5s linear;
+  }
+
+  .frame {
+    height:0;
+    width:100%;
+    position:relative;
+    padding-bottom:125%;
+
+    .body {
+      height:30%;
+      width:30%;
+      position:absolute;
+      top:40%;
+      left:33.33%;
+      transform:translate(var(--bodyPosition)) rotate(var(--bodyRotation));
+
+      .head {
+        position:absolute;
+        width:125%;
+        height:100%;
+        top:-95%;
+        left:-12.5%;
+        background:yellow;
+        border-radius:50%;
+        transform-origin:bottom center;
+        z-index:4;
+        transform:rotate(var(--headRotation));
+      }
+
+      .torso {
+        height:100%;
+        width:100%;
+        position:absolute;
+        top:0;
+        left:0;
+        background:white;
+        z-index:3;
+        border-top-left-radius:50%;
+        border-top-right-radius:50%;
+      }
+
+      .arm {
+        position:absolute;
+        top:26.67%;
+        width:25%;
+        height:80%;
+        transform-origin:50% 0;
+
+        &.left {
+          left:25%;
+          z-index:5;
+          transform:rotate(var(--leftArmRotation));
+
+          .forearm {
+            transform:rotate(var(--leftForearmRotation));
+          }
+        }
+
+        &.right {
+          right:25%;
+          z-index:0;
+          transform:rotate(var(--rightArmRotation));
+
+          .forearm {
+            transform:rotate(var(--rightForearmRotation));
+          }
+        }
+
+        .bicep {
+          position:absolute;
+          height:40%;
+          width:100%;
+          top:0;
+          left:0;
+          background:yellow;
+
+          .shoulder {
+            position:absolute;
+            width:100%;
+            height:66.66%;
+            border-radius:50%;
+            background:yellow;
+            top:-25%;
+            left:0;
+          }
+        }
+
+        .forearm {
+          position:absolute;
+          height:40%;
+          width:100%;
+          top:40%;
+          left:0;
+          background:orange;
+          transform-origin:50% 0;
+
+          .elbow {
+            position:absolute;
+            width:100%;
+            height:66.66%;
+            border-radius:50%;
+            background:orange;
+            top:-25%;
+            left:0;
+          }
+
+          .hand {
+            position:absolute;
+            width:150%;
+            height:100%;
+            background:yellow;
+            bottom:-75%;
+            left:-25%;
+            border-radius:50%;
+          }
+        }
+      }
+
+      .waist {
+        position:absolute;
+        width:100%;
+        height:66.66%;
+        bottom:-33.33%;
+        left:0;
+
+        .hips {
+          position:absolute;
+          height:100%;
+          width:100%;
+          top:0;
+          left:0;
+          background:brown;
+          z-index:2;
+          border-radius:50%;
+        }
+
+        .leg {
+          position:absolute;
+          height:125%;
+          width:26.67%;
+          top:75%;
+          z-index:3;
+          transform-origin:50% 0;
+
+          .thigh {
+            position:absolute;
+            height:40%;
+            width:100%;
+            top:0;
+            left:0;
+            background:white;
+
+            .pelvis {
+              position:absolute;
+              top:-33.33%;
+              left:0;
+              width:100%;
+              height:66.66%;
+              border-radius:50%;
+              background:white;
+            }
+          }
+
+          .calf {
+            position:absolute;
+            height:35%;
+            width:100%;
+            top:40%;
+            left:0;
+            background:white;
+            transform-origin:50% 0;
+
+            .knee {
+              position:absolute;
+              top:-37.5%;
+              left:0;
+              width:100%;
+              height:73.22%;
+              border-radius:50%;
+              background:yellow;
+            }
+          }
+
+          .foot {
+            position:absolute;
+            height:75%;
+            width:200%;
+            top:93.33%;
+            left:0;
+            background:black;
+            border-top-right-radius:50%;
+            transform-origin:25% 0;
+            z-index:5;
+
+            .ankle {
+              position:absolute;
+              top:-50%;
+              left:0;
+              height:100%;
+              width:50%;
+              background:black;
+              border-radius:50%;
+            }
+          }
+
+          &.left {
+            left:15%;
+            z-index:2;
+            transform:rotate(var(--leftLegRotation));
+
+            .calf {
+              transform:rotate(var(--leftCalfRotation));
+            }
+
+            .foot {
+              transform:rotate(var(--leftFootRotation));
+            }
+          }
+
+          &.right {
+            right:15%;
+            z-index:1;
+            transform:rotate(var(--rightLegRotation));
+
+            .calf {
+              transform:rotate(var(--rightCalfRotation));
+            }
+
+            .foot {
+              transform:rotate(var(--rightFootRotation));
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.idle {
+    animation-name:idle;
+    animation-duration:1s;
+    animation-iteration-count:infinite;
+  }
+
+  &.walk {
+    animation-name:walk;
+    animation-duration:1s;
+    animation-iteration-count:infinite;
+    * {
+      transition-duration:.5s;
+    }
+  }
+}
