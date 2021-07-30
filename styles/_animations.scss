@@ -28,6 +28,143 @@ $walk: (
   '.leg.right .calf .foot': (0: rotate(-20deg), 50: rotate(0deg), 100: rotate(-20deg)),
 );
 
+$walk2: (
+  '.body': (
+          0: translate(0,2%) rotate(3deg),
+          12.5: translate(0,-10%) rotate(-2deg),
+          25: translate(0,0) rotate(-2deg),
+          37.5: translate(0,10%) rotate(-2deg),
+          50: translate(0,0) rotate(0deg),
+          62.5: translate(0,-10%) rotate(0deg),
+          75: translate(0,0%) rotate(2deg),
+          87.5: translate(0,10%) rotate(5deg),
+          100:translate(0,2%) rotate(3deg),
+  ),
+  '.head': (
+          0: rotate(-2deg),
+          12.5: rotate(-2deg),
+          25: rotate(2deg),
+          37.5: rotate(-2deg),
+          50: rotate(-2deg),
+          62.5: rotate(2deg),
+          75: rotate(-2deg),
+          87.5: rotate(0deg),
+          100: rotate(0deg),
+  ),
+  '.arm.left': (
+          0: rotate(-25deg),
+          12.5: rotate(-15deg),
+          25: rotate(15deg),
+          37.5: rotate(70deg),
+          50: rotate(70deg),
+          62.5: rotate(50deg),
+          75: rotate(30deg),
+          87.5: rotate(-45deg),
+          100: rotate(-25deg),
+  ),
+  '.arm.left .forearm': (
+          0: rotate(-75deg),
+          12.5: rotate(-60deg),
+          25: rotate(-40deg),
+          37.5: rotate(-50deg),
+          50: rotate(-60deg),
+          62.5: rotate(-60deg),
+          75: rotate(-60deg),
+          87.5: rotate(-90deg),
+          100: rotate(-75deg),
+  ),
+  '.arm.right': (
+          0: rotate(75deg),
+          12.5: rotate(60deg),
+          25: rotate(30deg),
+          37.5: rotate(-40deg),
+          50: rotate(-40deg),
+          62.5: rotate(-20deg),
+          75: rotate(20deg),
+          87.5: rotate(75deg),
+          100: rotate(75deg),
+  ),
+  '.arm.right .forearm': (
+          0: rotate(-50deg),
+          12.5: rotate(-50deg),
+          25: rotate(-70deg),
+          37.5: rotate(-90deg),
+          50: rotate(-90deg),
+          62.5: rotate(-75deg),
+          75: rotate(-75deg),
+          87.5: rotate(-75deg),
+          100: rotate(-50deg),
+  ),
+  '.leg.left': (
+          0: rotate(30deg),
+          12.5: rotate(30deg),
+          25: rotate(20deg),
+          37.5: rotate(-20deg),
+          50: rotate(-30deg),
+          62.5: rotate(-70deg),
+          75: rotate(-50deg),
+          87.5: rotate(-10deg),
+          100: rotate(30deg),
+  ),
+  '.leg.left .calf': (
+          0: rotate(20deg),
+          12.5: rotate(0deg),
+          25: rotate(10deg),
+          37.5: rotate(40deg),
+          50: rotate(20deg),
+          62.5: rotate(120deg),
+          75: rotate(120deg),
+          87.5: rotate(110deg),
+          100: rotate(20deg),
+  ),
+  '.leg.left .calf .foot': (
+          0: rotate(-15deg),
+          12.5: rotate(-5deg),
+          25: rotate(-25deg),
+          37.5: rotate(-20deg),
+          50: rotate(-10deg),
+          62.5: rotate(-30deg),
+          75: rotate(-10deg),
+          87.5: rotate(-30deg),
+          100: rotate(-10deg),
+  ),
+  '.leg.right': (
+          0: rotate(-40deg),
+          12.5: rotate(-60deg),
+          25: rotate(-30deg),
+          37.5: rotate(35deg),
+          50: rotate(45deg),
+          62.5: rotate(35deg),
+          75: rotate(15deg),
+          87.5: rotate(-50deg),
+          100: rotate(-35deg),
+  ),
+  '.leg.right .calf': (
+          0: rotate(20deg),
+          12.5: rotate(110deg),
+          25: rotate(120deg),
+          37.5: rotate(65deg),
+          50: rotate(25deg),
+          62.5: rotate(15deg),
+          75: rotate(15deg),
+          87.5: rotate(75deg),
+          100: rotate(20deg),
+  ),
+  '.leg.right .calf .foot': (
+          0: rotate(-10deg),
+          12.5: rotate(-10deg),
+          25: rotate(-30deg),
+          37.5: rotate(-30deg),
+          50: rotate(-10deg),
+          62.5: rotate(-30deg),
+          75: rotate(-30deg),
+          87.5: rotate(-30deg),
+          100: rotate(-20deg),
+  ),
+);
+
+
+
 .character {
   &.idle {
     $i: 0;
@@ -61,6 +198,24 @@ $walk: (
 
       #{$part} {
         animation-name:walk-#{$i};
+      }
+    }
+  }
+
+  &.walk-2 {
+    $i: 0;
+    @each $part, $keyframes in $walk2 {
+      $i: $i + 1;
+      @keyframes walk2-#{$i} {
+        @each $keyframe, $rule in $keyframes {
+          #{$keyframe}% {
+            transform: $rule;
+          }
+        }
+      }
+
+      #{$part} {
+        animation-name:walk2-#{$i};
       }
     }
   }
