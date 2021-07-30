@@ -1,120 +1,67 @@
-@keyframes idle {
-  0% {
-    --bodyPosition: 0, 0;
-    --headRotation: 0deg;
+$idle: (
+  '.body': (0: translate(0,0), 50: translate(0,1.5%), 100: translate(0,0)),
+  '.head': (0: rotate(0deg), 50: rotate(2.5deg), 100: rotate(0deg)),
+  '.arm.left': (0: rotate(30deg), 50: rotate(25deg), 100: rotate(30deg)),
+  '.arm.left .forearm': (0: rotate(-90deg), 50: rotate(-90deg), 100: rotate(-90deg)),
+  '.arm.right': (0: rotate(30deg), 50: rotate(25deg), 100: rotate(30deg)),
+  '.arm.right .forearm': (0: rotate(-90deg), 50: rotate(-90deg), 100: rotate(-90deg)),
+  '.leg.left': (0: rotate(0deg), 50: rotate(-5deg), 100: rotate(0deg)),
+  '.leg.left .calf': (0: rotate(0deg), 50: rotate(10deg), 100: rotate(0deg)),
+  '.leg.left .calf .foot': (0: rotate(0deg), 50: rotate(-5deg), 100: rotate(0deg)),
+  '.leg.right': (0: rotate(0deg), 50: rotate(-5deg), 100: rotate(0deg)),
+  '.leg.right .calf': (0: rotate(0deg), 50: rotate(10deg), 100: rotate(0deg)),
+  '.leg.right .calf .foot': (0: rotate(0deg), 50: rotate(-5deg), 100: rotate(0deg)),
+);
 
-    --leftArmRotation: 30deg;
-    --leftForearmRotation: -90deg;
+$walk: (
+  '.body': (0: translate(0,0) rotate(3deg), 50: translate(0,1.5%) rotate(-3deg), 100: translate(0,0) rotate(3deg)),
+  '.head': (0: rotate(0deg), 50: rotate(2.5deg), 100: rotate(0deg)),
+  '.arm.left': (0: rotate(-15deg), 50: rotate(45deg), 100: rotate(-15deg)),
+  '.arm.left .forearm': (0: rotate(-75deg), 50: rotate(-75deg), 100: rotate(-75deg)),
+  '.arm.right': (0: rotate(15deg), 50: rotate(-25deg), 100: rotate(15deg)),
+  '.arm.right .forearm': (0: rotate(-75deg), 50: rotate(-75deg), 100: rotate(-75deg)),
+  '.leg.left': (0: rotate(30deg), 50: rotate(-30deg), 100: rotate(30deg)),
+  '.leg.left .calf': (0: rotate(0deg), 50: rotate(20deg), 100: rotate(0deg)),
+  '.leg.left .calf .foot': (0: rotate(0deg), 50: rotate(-20deg), 100: rotate(0deg)),
+  '.leg.right': (0: rotate(-30deg), 50: rotate(30deg), 100: rotate(-30deg)),
+  '.leg.right .calf': (0: rotate(20deg), 50: rotate(0deg), 100: rotate(20deg)),
+  '.leg.right .calf .foot': (0: rotate(-20deg), 50: rotate(0deg), 100: rotate(-20deg)),
+);
 
-    --rightArmRotation: 30deg;
-    --rightForearmRotation: -90deg;
+.character {
+  &.idle {
+    $i: 0;
+    @each $part, $keyframes in $idle {
+      $i: $i + 1;
+      @keyframes idle-#{$i} {
+        @each $keyframe, $rule in $keyframes {
+          #{$keyframe}% {
+            transform: $rule;
+          }
+        }
+      }
 
-    --leftLegRotation: 0deg;
-    --leftCalfRotation: 0deg;
-    --leftFootRotation: 0deg;
-
-    --rightLegRotation: 0deg;
-    --rightCalfRotation: 0deg;
-    --rightFootRotation: 0deg;
+      #{$part} {
+        animation-name:idle-#{$i};
+      }
+    }
   }
 
-  50% {
-    --bodyPosition: 0, 1.5%;
-    --headRotation: 2.5deg;
+  &.walk {
+    $i: 0;
+    @each $part, $keyframes in $walk {
+      $i: $i + 1;
+      @keyframes walk-#{$i} {
+        @each $keyframe, $rule in $keyframes {
+          #{$keyframe}% {
+            transform: $rule;
+          }
+        }
+      }
 
-    --leftArmRotation: 25deg;
-    --leftForearmRotation: -90deg;
-
-    --rightArmRotation: 25deg;
-    --rightForearmRotation: -90deg;
-
-    --leftLegRotation: -5deg;
-    --leftCalfRotation: 10deg;
-    --leftFootRotation: -5deg;
-
-    --rightLegRotation: -5deg;
-    --rightCalfRotation: 10deg;
-    --rightFootRotation: -5deg;
-  }
-
-  100% {
-    --bodyPosition: 0, 0;
-    --headRotation: 0deg;
-
-    --leftArmRotation: 30deg;
-    --leftForearmRotation: -90deg;
-
-    --rightArmRotation: 30deg;
-    --rightForearmRotation: -90deg;
-
-    --leftLegRotation: 0deg;
-    --leftCalfRotation: 0deg;
-    --leftFootRotation: 0deg;
-
-    --rightLegRotation: 0deg;
-    --rightCalfRotation: 0deg;
-    --rightFootRotation: 0deg;
-  }
-}
-
-@keyframes walk {
-  0% {
-    --bodyPosition: 0, 0%;
-    --bodyRotation: 3deg;
-    --headRotation: 0deg;
-
-    --leftArmRotation: -15deg;
-    --leftForearmRotation: -75deg;
-
-    --rightArmRotation: 15deg;
-    --rightForearmRotation: -75deg;
-
-    --leftLegRotation: 30deg;
-    --leftCalfRotation: 0deg;
-    --leftFootRotation: 0deg;
-
-    --rightLegRotation: -30deg;
-    --rightCalfRotation: 20deg;
-    --rightFootRotation: -20deg;
-  }
-
-  50% {
-    --bodyPosition: 0, 1.5%;
-    --bodyRotation: -3deg;
-    --headRotation: 2.5deg;
-
-    --leftArmRotation: 45deg;
-    --leftForearmRotation: -75deg;
-
-    --rightArmRotation: -25deg;
-    --rightForearmRotation: -75deg;
-
-    --leftLegRotation: -30deg;
-    --leftCalfRotation: 20deg;
-    --leftFootRotation: -20deg;
-
-    --rightLegRotation: 30deg;
-    --rightCalfRotation: 0deg;
-    --rightFootRotation: 0deg;
-  }
-
-  100% {
-    --bodyPosition: 0, 0%;
-    --bodyRotation: 3deg;
-    --headRotation: 0deg;
-
-    --leftArmRotation: -15deg;
-    --leftForearmRotation: -75deg;
-
-    --rightArmRotation: 15deg;
-    --rightForearmRotation: -75deg;
-
-    --leftLegRotation: 30deg;
-    --leftCalfRotation: 0deg;
-    --leftFootRotation: 0deg;
-
-    --rightLegRotation: -30deg;
-    --rightCalfRotation: 20deg;
-    --rightFootRotation: -20deg;
+      #{$part} {
+        animation-name:walk-#{$i};
+      }
+    }
   }
 }

@@ -65,6 +65,22 @@
 <script>
     const character = document.querySelector('.character');
     const keysDown = {};
+    let animationFrame;
+    let runTimeout;
+    let bodyParts = [
+        character.querySelector('.body'),
+        character.querySelector('.head'),
+        character.querySelector('.arm.left'),
+        character.querySelector('.arm.left .forearm'),
+        character.querySelector('.arm.right'),
+        character.querySelector('.arm.right .forearm'),
+        character.querySelector('.leg.left'),
+        character.querySelector('.leg.left .calf'),
+        character.querySelector('.leg.left .calf .foot'),
+        character.querySelector('.leg.right'),
+        character.querySelector('.leg.right .calf'),
+        character.querySelector('.leg.right .calf .foot'),
+    ];
 
     function goingLeft() {
         return keysDown['a'] || keysDown['ArrowLeft'];
@@ -76,29 +92,37 @@
 
     document.addEventListener('keydown', (event) => {
         keysDown[event.key] = true;
-        if(goingLeft() || goingRight()) {
-            character.classList.add('walk');
-            character.classList.remove('idle');
-        }
+        cancelAnimationFrame(animationFrame);
+        animationFrame = window.requestAnimationFrame(() => {
+            if(goingLeft() || goingRight()) {
+                character.classList.remove('idle');
+                character.classList.add('walk');
+            }
 
-        if(goingRight()) {
-            character.classList.remove('backwards');
-        }
+            if(goingRight()) {
+                character.classList.remove('backwards');
+            }
 
-        if(goingLeft()) {
-            character.classList.add('backwards');
-        }
+            if(goingLeft()) {
+                character.classList.add('backwards');
+            }
+        });
     });
 
     document.addEventListener('keyup', (event) => {
         keysDown[event.key] = false;
-        if (!goingLeft() && !goingRight()) {
-            character.classList.remove('walk');
-            character.classList.add('idle');
-        }
-        if(!goingLeft() && goingRight()) {
-            character.classList.remove('backwards');
-        }
+        event.stopPropagation();
+        event.preventDefault();
+        cancelAnimationFrame(animationFrame);
+        animationFrame = window.requestAnimationFrame(() => {
+            if (!goingLeft() && !goingRight()) {
+                character.classList.remove('walk');
+                character.classList.add('idle');
+            }
+            if (!goingLeft() && goingRight()) {
+                character.classList.remove('backwards');
+            }
+        });
     });
 </script>
 </body>
