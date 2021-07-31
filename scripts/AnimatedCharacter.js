@@ -146,9 +146,8 @@ export default class AnimatedCharacter {
                             </div>
                             <div class="calf">
                                 <div class="knee"></div>
-                                <div class="foot">
-                                    <div class="ankle"></div>
-                                </div>
+                                <div class="ankle"></div>
+                                <div class="foot"></div>
                             </div>
                         </div>
                         <div class="leg right">
@@ -157,9 +156,8 @@ export default class AnimatedCharacter {
                             </div>
                             <div class="calf">
                                 <div class="knee"></div>
-                                <div class="foot">
-                                    <div class="ankle"></div>
-                                </div>
+                                <div class="ankle"></div>
+                                <div class="foot"></div>
                             </div>
                         </div>
                     </div>

@@ -1,4 +1,5 @@
-@import '_animations.scss';
+@import '_animations';
+@import 'clothing';
 
 .character {
   max-width:100%;
@@ -48,32 +49,6 @@
         transform-origin:bottom center;
         z-index:4;
         transform:rotate(var(--headRotation));
-        &:before {
-          content: '';
-          position:absolute;
-          top:-20%;
-          left:-5%;
-          bottom:-10%;
-          right:-5%;
-          background-image:url(../assets/hair/spiky-1.png);
-          background-size:100%;
-          background-position:top center;
-          background-repeat:no-repeat;
-          z-index:1;
-        }
-        &:after {
-          content: '';
-          position:absolute;
-          top:0;
-          left:0;
-          bottom:0;
-          right:0;
-          background-image:url(../assets/face/face4.png);
-          background-size:50%;
-          background-position:95% 50%;
-          background-repeat:no-repeat;
-          z-index:2;
-        }
       }
 
       .torso {
@@ -182,6 +157,7 @@
           background:#f2f2f2;
           z-index:1;
           border-radius:50%;
+          overflow:hidden;
         }
 
         .leg {
@@ -208,6 +184,7 @@
               height:66.66%;
               border-radius:50%;
               background:#f2f2f2;
+              overflow:hidden;
             }
           }
 
@@ -219,15 +196,25 @@
             left:0;
             background:yellow;
             transform-origin:50% 0;
+            z-index:3;
 
-            .knee {
+            .knee, .ankle {
               position:absolute;
-              top:-37.5%;
               left:0;
               width:100%;
               height:73.22%;
               border-radius:50%;
               background:yellow;
+              overflow:hidden;
+            }
+
+            .knee {
+              top:-37.5%;
+            }
+
+            .ankle {
+              bottom:-37.5%;
+              z-index:-1;
             }
           }
 
@@ -236,21 +223,11 @@
             height:60%;
             width:200%;
             top:93.33%;
-            left:0;
+            left:-10%;
             background:yellow;
-            border-top-right-radius:50%;
+            border-radius:5px 50% 5px 5px;
             transform-origin:25% 0;
             z-index:5;
-
-            .ankle {
-              position:absolute;
-              top:-50%;
-              left:0;
-              height:119.1%;
-              width:50%;
-              background:yellow;
-              border-radius:50%;
-            }
           }
 
           &.left {

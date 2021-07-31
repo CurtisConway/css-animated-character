@@ -1,0 +1,56 @@
+.character {
+  .head, .thigh, .calf, .knee, .pelvis, .hips {
+    &:before, &:after {
+      content: '';
+      position:absolute;
+    }
+  }
+
+  .head {
+    &:before {
+      height:200%;
+      width:200%;
+      top:-50%;
+      left:-50%;
+      background-image:url(../assets/hair/spiky-1.png);
+      background-size:74%;
+      background-position:28% 72%;
+      background-repeat:no-repeat;
+      z-index:1;
+    }
+    &:after {
+      top:0;
+      left:0;
+      bottom:0;
+      right:0;
+      background-image:url(../assets/face/face3.png);
+      background-size:50%;
+      background-position:95% 50%;
+      background-repeat:no-repeat;
+      z-index:2;
+    }
+  }
+
+  .hips {
+    &:after {
+      top:0;
+      left:0;
+      height:100%;
+      width:100%;
+      background-image:url(../assets/clothing/pants/pantwaist-jeans-blue.png);
+      background-size:100%;
+      background-repeat:no-repeat;
+    }
+  }
+
+  .thigh, .calf, .knee, .pelvis {
+    &:after {
+      top:0;
+      left:0;
+      height:100%;
+      width:100%;
+      background-image:url(../assets/clothing/pants/pantleg-jeans-blue.png);
+      background-size:100%;
+    }
+  }
+}
