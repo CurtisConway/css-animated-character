@@ -48,7 +48,7 @@ export default class KeyboardControls {
     }
 
     /**
-     * @param {Event} event
+     * @param {KeyboardEvent} event
      * @returns void
      */
     keydownListener(event) {
@@ -63,7 +63,7 @@ export default class KeyboardControls {
     }
 
     /**
-     * @param {Event} event
+     * @param {KeyboardEvent} event
      * @returns void
      */
     keyUpListener(event) {
