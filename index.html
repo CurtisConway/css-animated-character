@@ -97,11 +97,11 @@
             });
         });
 
-        // ['mouseup', 'touchend'].forEach((eventName) => {
-        //     document.addEventListener(eventName, () => {
-        //         keyboardControls.setInputInterval();
-        //     });
-        // });
+        ['mouseup', 'touchend'].forEach((eventName) => {
+            document.addEventListener(eventName, () => {
+                keyboardControls.setInputInterval();
+            });
+        });
     </script>
 </body>
 </html>

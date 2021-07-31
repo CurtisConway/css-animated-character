@@ -56,12 +56,17 @@ export default class AnimatedCharacter {
 
     /**
      * @param {AnimationStates|Number} state
-     * @returns AnimationStates
+     * @param {Boolean} queueAnimation
+     * @returns AnimationStates|Number
      */
-    setAnimationState(state = AnimatedCharacter.AnimationStates.Idle) {
+    setAnimationState(state = AnimatedCharacter.AnimationStates.Idle, queueAnimation = false) {
+        if (queueAnimation) {
+            this.nextAnimation = state;
+            return this.nextAnimation;
+        }
+        this.animationState = state;
         requestAnimationFrame(() => {
-            this.animationState = state;
-            this.character.setAttribute('data-animation', String(state));
+            this.character.setAttribute('data-animation', String(this.animationState));
 
             if (this.backwards) {
                 this.character.classList.add('backwards');
@@ -77,23 +82,16 @@ export default class AnimatedCharacter {
      * @returns void
      */
     idle() {
-        if (this.isWaiting) {
-            this.nextAnimation = AnimatedCharacter.AnimationStates.Idle;
-        } else {
-            this.setAnimationState(AnimatedCharacter.AnimationStates.Idle);
-        }
+        this.setAnimationState(AnimatedCharacter.AnimationStates.Idle, this.isWaiting);
     }
 
     /**
+     * @param {Boolean} backwards
      * @returns void
      */
     walk(backwards = false) {
-        if (this.isWaiting) {
-            this.nextAnimation = AnimatedCharacter.AnimationStates.Walk;
-        } else {
-            this.backwards = backwards;
-            this.setAnimationState(AnimatedCharacter.AnimationStates.Walk);
-        }
+        this.backwards = backwards;
+        this.setAnimationState(AnimatedCharacter.AnimationStates.Walk, this.isWaiting);
     }
 
     /**
@@ -104,7 +102,7 @@ export default class AnimatedCharacter {
         this.nextAnimation = this.animationState;
         this.setAnimationState(AnimatedCharacter.AnimationStates.Jump);
         setTimeout(() => {
-            this.setAnimationState(this.nextAnimation);
+            this.setAnimationState(this.nextAnimation, false);
         }, 1000);
     }
 
