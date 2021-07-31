@@ -1,5 +1,5 @@
 .character {
-  .head, .thigh, .calf, .knee, .pelvis, .hips {
+  .head, .thigh, .calf, .knee, .pelvis, .hips, .torso, .bicep, .foot {
     &:before, &:after {
       content: '';
       position:absolute;
@@ -21,6 +21,24 @@
     &:after {
       background-image:url(../assets/face/face3.png);
       z-index:2;
+    }
+  }
+
+  .torso {
+    &:after {
+      background-image:url(../assets/clothing/shirts/shirt-gray-torso.png);
+    }
+  }
+
+  .bicep {
+    &:after {
+      background-image:url(../assets/clothing/shirts/shirt-gray-sleeve.png);
+    }
+  }
+
+  .foot {
+    &:after {
+      background-image:url(../assets/clothing/shoes/shoe-boots-1.png);
     }
   }
 
