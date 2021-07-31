@@ -87,10 +87,11 @@ export default class AnimatedCharacter {
     /**
      * @returns void
      */
-    walk() {
+    walk(backwards = false) {
         if (this.isWaiting) {
             this.nextAnimation = AnimatedCharacter.AnimationStates.Walk;
         } else {
+            this.backwards = backwards;
             this.setAnimationState(AnimatedCharacter.AnimationStates.Walk);
         }
     }

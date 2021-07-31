@@ -24,53 +24,13 @@
     </style>
 </head>
 <body style="background:#242424;">
-
-<div class="characterMount"></div>
-
-<script type="module">
-    import AnimatedCharacter from "./scripts/AnimatedCharacter";
-    const character = new AnimatedCharacter(document.querySelector('.characterMount'));
-    const keysDown = {};
-
-    function goingLeft() {
-        return keysDown['a'] || keysDown['ArrowLeft'];
-    }
-
-    function goingRight() {
-        return keysDown['d'] || keysDown['ArrowRight'];
-    }
-
-    function isJumping() {
-        return keysDown[' '];
-    }
-
-    document.addEventListener('keydown', (event) => {
-        keysDown[event.key] = true;
-        if (isJumping()) {
-            character.jump();
-        } else {
-            if(goingLeft() || goingRight()) {
-                character.walk();
-            }
-
-            if(goingRight()) {
-                character.backwards = false;
-            }
-
-            if(goingLeft()) {
-                character.backwards = true;
-            }
-        }
-    });
-
-    document.addEventListener('keyup', (event) => {
-        keysDown[event.key] = false;
-        event.stopPropagation();
-        event.preventDefault();
-        if (!goingLeft() && !goingRight()) {
-            character.idle();
-        }
-    });
-</script>
+    <div id="characterMount"></div>
+    <script type="module">
+        import AnimatedCharacter from "./scripts/AnimatedCharacter";
+        import KeyboardControls from "./scripts/KeyboardControls";
+        const character = new AnimatedCharacter(document.getElementById('characterMount'));
+        const keyboardControls = new KeyboardControls(character);
+        keyboardControls.start();
+    </script>
 </body>
 </html>
