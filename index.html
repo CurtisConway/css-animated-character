@@ -24,78 +24,13 @@
     </style>
 </head>
 <body style="background:#242424;">
-<div class="character idle">
-    <div class="frame">
-        <div class="body">
-            <div class="arm left">
-                <div class="bicep">
-                    <div class="shoulder"></div>
-                </div>
-                <div class="forearm">
-                    <div class="elbow"></div>
-                    <div class="hand"></div>
-                </div>
-            </div>
-            <div class="arm right">
-                <div class="bicep">
-                    <div class="shoulder"></div>
-                </div>
-                <div class="forearm">
-                    <div class="elbow"></div>
-                    <div class="hand"></div>
-                </div>
-            </div>
-            <div class="torso">
-            </div>
-            <div class="head"></div>
-            <div class="waist">
-                <div class="hips"></div>
-                <div class="leg left">
-                    <div class="thigh">
-                        <div class="pelvis"></div>
-                    </div>
-                    <div class="calf">
-                        <div class="knee"></div>
-                        <div class="foot">
-                            <div class="ankle"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="leg right">
-                    <div class="thigh">
-                        <div class="pelvis"></div>
-                    </div>
-                    <div class="calf">
-                        <div class="knee"></div>
-                        <div class="foot">
-                            <div class="ankle"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
-<script>
-    const character = document.querySelector('.character');
+<div class="characterMount"></div>
+
+<script type="module">
+    import AnimatedCharacter from "./scripts/AnimatedCharacter";
+    const character = new AnimatedCharacter(document.querySelector('.characterMount'));
     const keysDown = {};
-    let animationFrame;
-    let runTimeout;
-    let bodyParts = [
-        character.querySelector('.body'),
-        character.querySelector('.head'),
-        character.querySelector('.arm.left'),
-        character.querySelector('.arm.left .forearm'),
-        character.querySelector('.arm.right'),
-        character.querySelector('.arm.right .forearm'),
-        character.querySelector('.leg.left'),
-        character.querySelector('.leg.left .calf'),
-        character.querySelector('.leg.left .calf .foot'),
-        character.querySelector('.leg.right'),
-        character.querySelector('.leg.right .calf'),
-        character.querySelector('.leg.right .calf .foot'),
-    ];
 
     function goingLeft() {
         return keysDown['a'] || keysDown['ArrowLeft'];
@@ -111,47 +46,30 @@
 
     document.addEventListener('keydown', (event) => {
         keysDown[event.key] = true;
-        cancelAnimationFrame(animationFrame);
-        animationFrame = window.requestAnimationFrame(() => {
-            if (isJumping()) {
-                character.classList.add('jump');
-                cancelAnimationFrame(animationFrame);
-                setTimeout(() => {
-                    animationFrame = window.requestAnimationFrame(() => {
-                        character.classList.remove('jump');
-                    });
-                }, 1000);
-            } else {
-                if(goingLeft() || goingRight()) {
-                    character.classList.remove('idle');
-                    character.classList.add('walk');
-                }
-
-                if(goingRight()) {
-                    character.classList.remove('backwards');
-                }
-
-                if(goingLeft()) {
-                    character.classList.add('backwards');
-                }
+        if (isJumping()) {
+            character.jump();
+        } else {
+            if(goingLeft() || goingRight()) {
+                character.walk();
             }
-        });
+
+            if(goingRight()) {
+                character.backwards = false;
+            }
+
+            if(goingLeft()) {
+                character.backwards = true;
+            }
+        }
     });
 
     document.addEventListener('keyup', (event) => {
         keysDown[event.key] = false;
         event.stopPropagation();
         event.preventDefault();
-        cancelAnimationFrame(animationFrame);
-        animationFrame = window.requestAnimationFrame(() => {
-            if (!goingLeft() && !goingRight()) {
-                character.classList.remove('walk');
-                character.classList.add('idle');
-            }
-            if (!goingLeft() && goingRight()) {
-                character.classList.remove('backwards');
-            }
-        });
+        if (!goingLeft() && !goingRight()) {
+            character.idle();
+        }
     });
 </script>
 </body>

@@ -264,7 +264,7 @@ $jump: (
 
 
 .character {
-  &.idle {
+  &[data-animation="0"] {
     $i: 0;
     @each $part, $keyframes in $idle {
       $i: $i + 1;
@@ -282,7 +282,7 @@ $jump: (
     }
   }
 
-  &.walk {
+  &[data-animation="1"] {
     $i: 0;
     @each $part, $keyframes in $walk {
       $i: $i + 1;
@@ -306,7 +306,7 @@ $jump: (
     }
   }
 
-  &.jump {
+  &[data-animation="2"] {
     $i: 0;
     @each $part, $keyframes in $jump {
       $i: $i + 1;
