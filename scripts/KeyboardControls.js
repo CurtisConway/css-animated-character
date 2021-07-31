@@ -53,13 +53,7 @@ export default class KeyboardControls {
      */
     keydownListener(event) {
         this.keysDown[event.code] = true;
-        if (this.isJumping) {
-            this.character.jump();
-        } else {
-            if (this.isWalking) {
-                this.character.walk(this.isBackward);
-            }
-        }
+
     }
 
     /**
@@ -70,17 +64,27 @@ export default class KeyboardControls {
         event.stopPropagation();
         event.preventDefault();
         this.keysDown[event.code]  = false;
-        if (!this.isWalking) {
-            this.character.idle();
-        } else {
-            this.character.walk(this.isBackward);
-        }
     }
 
     /**
      * @returns void
      */
     start() {
+        this.inputInterval = setInterval(() => {
+            requestAnimationFrame(() => {
+                if (this.isJumping) {
+                    this.character.jump();
+                } else {
+                    if (this.isWalking) {
+                        this.character.walk(this.isBackward);
+                    } else {
+                        this.character.idle();
+                    }
+                }
+            });
+        }, 50);
+        document.removeEventListener('keydown', this.keyDownEvent);
+        document.removeEventListener('keyup', this.keyUpEvent);
         document.addEventListener('keydown', this.keyDownEvent = (event) => this.keydownListener(event));
         document.addEventListener('keyup', this.keyUpEvent = (event) => this.keyUpListener(event));
     }
@@ -89,6 +93,7 @@ export default class KeyboardControls {
      * @returns void
      */
     destroy() {
+        clearInterval(this.inputInterval);
         document.removeEventListener('keydown', this.keyDownEvent);
         document.removeEventListener('keyup', this.keyUpEvent);
         delete this;
