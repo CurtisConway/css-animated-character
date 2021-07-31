@@ -97,7 +97,20 @@
             });
         });
 
-        ['mouseup', 'touchend'].forEach((eventName) => {
+        document.addEventListener('contextmenu', (event) => {
+            const element = event.target;
+            console.log(element);
+            if (
+                element.matches('#walkForwardButton') ||
+                element.matches('#jumpButton') ||
+                element.matches('#idleButton') ||
+                element.matches('#walkBackwardButton')
+            ) {
+                event.preventDefault();
+            }
+        });
+
+        ['mouseup', 'touchend', 'touchcancel'].forEach((eventName) => {
             document.addEventListener(eventName, () => {
                 keyboardControls.setInputInterval();
             });
