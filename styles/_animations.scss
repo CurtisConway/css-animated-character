@@ -36,7 +36,7 @@ $walk: (
       rotate(2deg),
       rotate(-2deg),
       rotate(0deg),
-      rotate(0deg),
+      rotate(-2deg),
   ),
   '.arm.left': (
       rotate(-25deg),
@@ -113,7 +113,7 @@ $walk: (
       rotate(-30deg),
       rotate(-10deg),
       rotate(-30deg),
-      rotate(-10deg),
+      rotate(-15deg),
   ),
   '.leg.right': (
       rotate(-40deg),
@@ -124,7 +124,7 @@ $walk: (
       rotate(35deg),
       rotate(15deg),
       rotate(-50deg),
-      rotate(-35deg),
+      rotate(-40deg),
   ),
   '.leg.right .calf': (
       rotate(20deg),
@@ -146,7 +146,7 @@ $walk: (
       rotate(-30deg),
       rotate(-30deg),
       rotate(-30deg),
-      rotate(-20deg),
+      rotate(-10deg),
   ),
 );
 

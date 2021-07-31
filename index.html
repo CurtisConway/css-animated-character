@@ -35,6 +35,7 @@
         }
 
         button {
+            user-select: none;
             height:50px;
             width:150px;
             background:#e4e4e4;
@@ -58,6 +59,9 @@
         </button>
         <button id="jumpButton">
             Jump
+        </button>
+        <button id="idleButton">
+            Idle
         </button>
         <button id="walkForwardButton">
             Walk Right
@@ -83,17 +87,21 @@
                     character.jump();
                 }
 
+                if(element.matches('#idleButton')) {
+                    character.idle();
+                }
+
                 if(element.matches('#walkBackwardButton')) {
                     character.walk(true);
                 }
             });
         });
 
-        ['mouseup', 'touchend'].forEach((eventName) => {
-            document.addEventListener(eventName, () => {
-                keyboardControls.setInputInterval();
-            });
-        });
+        // ['mouseup', 'touchend'].forEach((eventName) => {
+        //     document.addEventListener(eventName, () => {
+        //         keyboardControls.setInputInterval();
+        //     });
+        // });
     </script>
 </body>
 </html>
