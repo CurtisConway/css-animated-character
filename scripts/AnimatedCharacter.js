@@ -104,9 +104,6 @@ export default class AnimatedCharacter {
         this.nextAnimation = this.animationState;
         this.setAnimationState(AnimatedCharacter.AnimationStates.Jump);
         setTimeout(() => {
-            if (this.nextAnimation === AnimatedCharacter.AnimationStates.Jump) {
-                this.nextAnimation = AnimatedCharacter.AnimationStates.Idle;
-            }
             this.setAnimationState(this.nextAnimation);
         }, 1000);
     }
