@@ -152,6 +152,7 @@ $walk: (
 
 $jump: (
     '.body': (
+          translate(0,0) rotate(0deg),
           translate(0,0) rotate(10deg),
           translate(0,40%) rotate(30deg),
           translate(20%,-5%) rotate(20deg),
@@ -159,8 +160,10 @@ $jump: (
           translate(30%,0) rotate(-15deg),
           translate(10%,50%) rotate(40deg),
           translate(0,0) rotate(10deg),
+          translate(0,0) rotate(0deg),
     ),
     '.head': (
+          rotate(0deg),
           rotate(-3deg),
           rotate(-10deg),
           rotate(3deg),
@@ -168,8 +171,10 @@ $jump: (
           rotate(-3deg),
           rotate(-20deg),
           rotate(-3deg),
+          rotate(0deg),
     ),
     '.arm.left': (
+          rotate(30deg),
           rotate(30deg),
           rotate(80deg),
           rotate(-150deg),
@@ -177,8 +182,10 @@ $jump: (
           rotate(-190deg),
           rotate(-250deg),
           rotate(30deg),
+          rotate(30deg),
     ),
     '.arm.left .forearm': (
+          rotate(-90deg),
           rotate(-90deg),
           rotate(-90deg),
           rotate(-70deg),
@@ -186,8 +193,10 @@ $jump: (
           rotate(10deg),
           rotate(90deg),
           rotate(-90deg),
+          rotate(-90deg),
     ),
     '.arm.right': (
+          rotate(30deg),
           rotate(0deg),
           rotate(90deg),
           rotate(-150deg),
@@ -195,8 +204,10 @@ $jump: (
           rotate(-160deg),
           rotate(-130deg),
           rotate(0deg),
+          rotate(30deg),
     ),
     '.arm.right .forearm': (
+          rotate(-90deg),
           rotate(-90deg),
           rotate(-90deg),
           rotate(-60deg),
@@ -204,8 +215,10 @@ $jump: (
           rotate(-20deg),
           rotate(-100deg),
           rotate(-90deg),
+          rotate(-90deg),
     ),
     '.leg.left': (
+          rotate(0deg),
           rotate(-10deg),
           rotate(-90deg),
           rotate(0deg),
@@ -213,8 +226,10 @@ $jump: (
           rotate(-5deg),
           rotate(-110deg),
           rotate(-10deg),
+          rotate(0deg),
     ),
     '.leg.left .calf': (
+          rotate(0deg),
           rotate(0deg),
           rotate(90deg),
           rotate(0deg),
@@ -222,8 +237,10 @@ $jump: (
           rotate(0deg),
           rotate(90deg),
           rotate(0deg),
+          rotate(0deg),
     ),
     '.leg.left .calf .foot': (
+          rotate(0deg),
           rotate(0deg),
           rotate(-30deg),
           rotate(30deg),
@@ -231,8 +248,10 @@ $jump: (
           rotate(-20deg),
           rotate(-20deg),
           rotate(0deg),
+          rotate(0deg),
     ),
     '.leg.right': (
+          rotate(0deg),
           rotate(-10deg),
           rotate(-110deg),
           rotate(0deg),
@@ -240,23 +259,28 @@ $jump: (
           rotate(-10deg),
           rotate(-130deg),
           rotate(-10deg),
+          rotate(0deg),
     ),
     '.leg.right .calf': (
           rotate(0deg),
-          rotate(100deg),
           rotate(0deg),
           rotate(100deg),
           rotate(0deg),
           rotate(100deg),
+          rotate(0deg),
+          rotate(100deg),
+          rotate(0deg),
           rotate(0deg),
     ),
     '.leg.right .calf .foot': (
+          rotate(0deg),
           rotate(0deg),
           rotate(-20deg),
           rotate(30deg),
           rotate(20deg),
           rotate(-20deg),
           rotate(-10deg),
+          rotate(0deg),
           rotate(0deg),
     ),
 );
@@ -321,10 +345,9 @@ $jump: (
       }
 
       #{$part} {
-        animation-direction: reverse;
         animation-duration: 1s;
         animation-timing-function:linear;
-        animation-iteration-count:1;
+        animation-iteration-count: infinite;
         animation-name:jump-#{$i};
       }
     }
