@@ -7,6 +7,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CSS Animated Character</title>
     <link rel="stylesheet" href="styles/character.scss">
+    <style>
+        .character {
+            /*background-image:url(jumping.jpg);*/
+            background-size:410%;
+            background-position:106% -5%;
+            background-repeat:no-repeat;
+        }
+        /*.character * {*/
+        /*    opacity:.95;*/
+        /*}*/
+        /*.character.jump  * {*/
+        /*    !*animation-play-state:paused;*!*/
+        /*    animation-direction: normal!important;*/
+        /*}*/
+    </style>
 </head>
 <body style="background:#242424;">
 <div class="character idle">
@@ -90,21 +105,35 @@
         return keysDown['d'] || keysDown['ArrowRight'];
     }
 
+    function isJumping() {
+        return keysDown[' '];
+    }
+
     document.addEventListener('keydown', (event) => {
         keysDown[event.key] = true;
         cancelAnimationFrame(animationFrame);
         animationFrame = window.requestAnimationFrame(() => {
-            if(goingLeft() || goingRight()) {
-                character.classList.remove('idle');
-                character.classList.add('walk');
-            }
+            if (isJumping()) {
+                character.classList.add('jump');
+                cancelAnimationFrame(animationFrame);
+                setTimeout(() => {
+                    animationFrame = window.requestAnimationFrame(() => {
+                        character.classList.remove('jump');
+                    });
+                }, 1000);
+            } else {
+                if(goingLeft() || goingRight()) {
+                    character.classList.remove('idle');
+                    character.classList.add('walk');
+                }
 
-            if(goingRight()) {
-                character.classList.remove('backwards');
-            }
+                if(goingRight()) {
+                    character.classList.remove('backwards');
+                }
 
-            if(goingLeft()) {
-                character.classList.add('backwards');
+                if(goingLeft()) {
+                    character.classList.add('backwards');
+                }
             }
         });
     });

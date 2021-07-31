@@ -1,3 +1,5 @@
+@use "sass:math";
+
 $idle: (
   '.body': (0: translate(0,0), 50: translate(0,1.5%), 100: translate(0,0)),
   '.head': (0: rotate(0deg), 50: rotate(2.5deg), 100: rotate(0deg)),
@@ -15,137 +17,248 @@ $idle: (
 
 $walk: (
   '.body': (
-          0: translate(0,2%) rotate(3deg),
-          12.5: translate(0,-10%) rotate(-2deg),
-          25: translate(0,0) rotate(-2deg),
-          37.5: translate(0,10%) rotate(-2deg),
-          50: translate(0,0) rotate(0deg),
-          62.5: translate(0,-10%) rotate(0deg),
-          75: translate(0,0%) rotate(2deg),
-          87.5: translate(0,10%) rotate(5deg),
-          100:translate(0,2%) rotate(3deg),
+          translate(0,2%) rotate(3deg),
+          translate(0,-10%) rotate(-2deg),
+          translate(0,0) rotate(-2deg),
+          translate(0,10%) rotate(-2deg),
+          translate(0,0) rotate(0deg),
+          translate(0,-10%) rotate(0deg),
+          translate(0,0%) rotate(2deg),
+          translate(0,10%) rotate(5deg),
+          translate(0,2%) rotate(3deg),
   ),
   '.head': (
-          0: rotate(-2deg),
-          12.5: rotate(-2deg),
-          25: rotate(2deg),
-          37.5: rotate(-2deg),
-          50: rotate(-2deg),
-          62.5: rotate(2deg),
-          75: rotate(-2deg),
-          87.5: rotate(0deg),
-          100: rotate(0deg),
+      rotate(-2deg),
+      rotate(-2deg),
+      rotate(2deg),
+      rotate(-2deg),
+      rotate(-2deg),
+      rotate(2deg),
+      rotate(-2deg),
+      rotate(0deg),
+      rotate(0deg),
   ),
   '.arm.left': (
-          0: rotate(-25deg),
-          12.5: rotate(-15deg),
-          25: rotate(15deg),
-          37.5: rotate(70deg),
-          50: rotate(70deg),
-          62.5: rotate(50deg),
-          75: rotate(30deg),
-          87.5: rotate(-45deg),
-          100: rotate(-25deg),
+      rotate(-25deg),
+      rotate(-15deg),
+      rotate(15deg),
+      rotate(70deg),
+      rotate(70deg),
+      rotate(50deg),
+      rotate(30deg),
+      rotate(-45deg),
+      rotate(-25deg),
   ),
   '.arm.left .forearm': (
-          0: rotate(-75deg),
-          12.5: rotate(-60deg),
-          25: rotate(-40deg),
-          37.5: rotate(-50deg),
-          50: rotate(-60deg),
-          62.5: rotate(-60deg),
-          75: rotate(-60deg),
-          87.5: rotate(-90deg),
-          100: rotate(-75deg),
+      rotate(-75deg),
+      rotate(-60deg),
+      rotate(-40deg),
+      rotate(-50deg),
+      rotate(-60deg),
+      rotate(-60deg),
+      rotate(-60deg),
+      rotate(-90deg),
+      rotate(-75deg),
   ),
   '.arm.right': (
-          0: rotate(75deg),
-          12.5: rotate(60deg),
-          25: rotate(30deg),
-          37.5: rotate(-40deg),
-          50: rotate(-40deg),
-          62.5: rotate(-20deg),
-          75: rotate(20deg),
-          87.5: rotate(75deg),
-          100: rotate(75deg),
+      rotate(75deg),
+      rotate(60deg),
+      rotate(30deg),
+      rotate(-40deg),
+      rotate(-40deg),
+      rotate(-20deg),
+      rotate(20deg),
+      rotate(75deg),
+      rotate(75deg),
   ),
   '.arm.right .forearm': (
-          0: rotate(-50deg),
-          12.5: rotate(-50deg),
-          25: rotate(-70deg),
-          37.5: rotate(-90deg),
-          50: rotate(-90deg),
-          62.5: rotate(-75deg),
-          75: rotate(-75deg),
-          87.5: rotate(-75deg),
-          100: rotate(-50deg),
+      rotate(-50deg),
+      rotate(-50deg),
+      rotate(-70deg),
+      rotate(-90deg),
+      rotate(-90deg),
+      rotate(-75deg),
+      rotate(-75deg),
+      rotate(-75deg),
+      rotate(-50deg),
   ),
   '.leg.left': (
-          0: rotate(30deg),
-          12.5: rotate(30deg),
-          25: rotate(20deg),
-          37.5: rotate(-20deg),
-          50: rotate(-30deg),
-          62.5: rotate(-70deg),
-          75: rotate(-50deg),
-          87.5: rotate(-10deg),
-          100: rotate(30deg),
+      rotate(30deg),
+      rotate(30deg),
+      rotate(20deg),
+      rotate(-20deg),
+      rotate(-30deg),
+      rotate(-70deg),
+      rotate(-50deg),
+      rotate(-10deg),
+      rotate(30deg),
   ),
   '.leg.left .calf': (
-          0: rotate(20deg),
-          12.5: rotate(0deg),
-          25: rotate(10deg),
-          37.5: rotate(40deg),
-          50: rotate(20deg),
-          62.5: rotate(120deg),
-          75: rotate(120deg),
-          87.5: rotate(110deg),
-          100: rotate(20deg),
+      rotate(20deg),
+      rotate(0deg),
+      rotate(10deg),
+      rotate(40deg),
+      rotate(20deg),
+      rotate(120deg),
+      rotate(120deg),
+      rotate(110deg),
+      rotate(20deg),
   ),
   '.leg.left .calf .foot': (
-          0: rotate(-15deg),
-          12.5: rotate(-5deg),
-          25: rotate(-25deg),
-          37.5: rotate(-20deg),
-          50: rotate(-10deg),
-          62.5: rotate(-30deg),
-          75: rotate(-10deg),
-          87.5: rotate(-30deg),
-          100: rotate(-10deg),
+      rotate(-15deg),
+      rotate(-5deg),
+      rotate(-25deg),
+      rotate(-20deg),
+      rotate(-10deg),
+      rotate(-30deg),
+      rotate(-10deg),
+      rotate(-30deg),
+      rotate(-10deg),
   ),
   '.leg.right': (
-          0: rotate(-40deg),
-          12.5: rotate(-60deg),
-          25: rotate(-30deg),
-          37.5: rotate(35deg),
-          50: rotate(45deg),
-          62.5: rotate(35deg),
-          75: rotate(15deg),
-          87.5: rotate(-50deg),
-          100: rotate(-35deg),
+      rotate(-40deg),
+      rotate(-60deg),
+      rotate(-30deg),
+      rotate(35deg),
+      rotate(45deg),
+      rotate(35deg),
+      rotate(15deg),
+      rotate(-50deg),
+      rotate(-35deg),
   ),
   '.leg.right .calf': (
-          0: rotate(20deg),
-          12.5: rotate(110deg),
-          25: rotate(120deg),
-          37.5: rotate(65deg),
-          50: rotate(25deg),
-          62.5: rotate(15deg),
-          75: rotate(15deg),
-          87.5: rotate(75deg),
-          100: rotate(20deg),
+      rotate(20deg),
+      rotate(110deg),
+      rotate(120deg),
+      rotate(65deg),
+      rotate(25deg),
+      rotate(15deg),
+      rotate(15deg),
+      rotate(75deg),
+      rotate(20deg),
   ),
   '.leg.right .calf .foot': (
-          0: rotate(-10deg),
-          12.5: rotate(-10deg),
-          25: rotate(-30deg),
-          37.5: rotate(-30deg),
-          50: rotate(-10deg),
-          62.5: rotate(-30deg),
-          75: rotate(-30deg),
-          87.5: rotate(-30deg),
-          100: rotate(-20deg),
+      rotate(-10deg),
+      rotate(-10deg),
+      rotate(-30deg),
+      rotate(-30deg),
+      rotate(-10deg),
+      rotate(-30deg),
+      rotate(-30deg),
+      rotate(-30deg),
+      rotate(-20deg),
   ),
+);
+
+$jump: (
+    '.body': (
+          translate(0,0) rotate(10deg),
+          translate(0,40%) rotate(30deg),
+          translate(20%,-5%) rotate(20deg),
+          translate(20%,-105%) rotate(20deg),
+          translate(30%,0) rotate(-15deg),
+          translate(10%,50%) rotate(40deg),
+          translate(0,0) rotate(10deg),
+    ),
+    '.head': (
+          rotate(-3deg),
+          rotate(-10deg),
+          rotate(3deg),
+          rotate(10deg),
+          rotate(-3deg),
+          rotate(-20deg),
+          rotate(-3deg),
+    ),
+    '.arm.left': (
+          rotate(30deg),
+          rotate(80deg),
+          rotate(-150deg),
+          rotate(-90deg),
+          rotate(-190deg),
+          rotate(-250deg),
+          rotate(30deg),
+    ),
+    '.arm.left .forearm': (
+          rotate(-90deg),
+          rotate(-90deg),
+          rotate(-70deg),
+          rotate(-100deg),
+          rotate(10deg),
+          rotate(90deg),
+          rotate(-90deg),
+    ),
+    '.arm.right': (
+          rotate(0deg),
+          rotate(90deg),
+          rotate(-150deg),
+          rotate(-100deg),
+          rotate(-160deg),
+          rotate(-130deg),
+          rotate(0deg),
+    ),
+    '.arm.right .forearm': (
+          rotate(-90deg),
+          rotate(-90deg),
+          rotate(-60deg),
+          rotate(-90deg),
+          rotate(-20deg),
+          rotate(-100deg),
+          rotate(-90deg),
+    ),
+    '.leg.left': (
+          rotate(-10deg),
+          rotate(-90deg),
+          rotate(0deg),
+          rotate(-130deg),
+          rotate(-5deg),
+          rotate(-110deg),
+          rotate(-10deg),
+    ),
+    '.leg.left .calf': (
+          rotate(0deg),
+          rotate(90deg),
+          rotate(0deg),
+          rotate(120deg),
+          rotate(0deg),
+          rotate(90deg),
+          rotate(0deg),
+    ),
+    '.leg.left .calf .foot': (
+          rotate(0deg),
+          rotate(-30deg),
+          rotate(30deg),
+          rotate(-10deg),
+          rotate(-20deg),
+          rotate(-20deg),
+          rotate(0deg),
+    ),
+    '.leg.right': (
+          rotate(-10deg),
+          rotate(-110deg),
+          rotate(0deg),
+          rotate(-120deg),
+          rotate(-10deg),
+          rotate(-130deg),
+          rotate(-10deg),
+    ),
+    '.leg.right .calf': (
+          rotate(0deg),
+          rotate(100deg),
+          rotate(0deg),
+          rotate(100deg),
+          rotate(0deg),
+          rotate(100deg),
+          rotate(0deg),
+    ),
+    '.leg.right .calf .foot': (
+          rotate(0deg),
+          rotate(-20deg),
+          rotate(30deg),
+          rotate(20deg),
+          rotate(-20deg),
+          rotate(-10deg),
+          rotate(0deg),
+    ),
 );
 
 
@@ -173,19 +286,46 @@ $walk: (
     $i: 0;
     @each $part, $keyframes in $walk {
       $i: $i + 1;
+      $y: 0;
       @keyframes walk-#{$i} {
         @each $keyframe, $rule in $keyframes {
-          #{$keyframe}% {
-            transform: $rule;
+          #{math.div($y, (length($keyframes) - 1)) * 100}% {
+            transform: $keyframe;
           }
+          $y: $y + 1;
         }
       }
 
       #{$part} {
         animation-direction: reverse;
         animation-duration: 1.5s;
+        animation-iteration-count: infinite;
         animation-timing-function:linear;
         animation-name:walk-#{$i};
+      }
+    }
+  }
+
+  &.jump {
+    $i: 0;
+    @each $part, $keyframes in $jump {
+      $i: $i + 1;
+      $y: 0;
+      @keyframes jump-#{$i} {
+        @each $keyframe in $keyframes {
+          $y: $y + 1;
+          #{math.div($y, (length($keyframes) - 1)) * 100}% {
+            transform: $keyframe;
+          }
+        }
+      }
+
+      #{$part} {
+        animation-direction: reverse;
+        animation-duration: 1s;
+        animation-timing-function:linear;
+        animation-iteration-count:1;
+        animation-name:jump-#{$i};
       }
     }
   }
