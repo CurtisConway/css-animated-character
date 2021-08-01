@@ -16,6 +16,7 @@ export default class KeyboardControls {
         this.keyDownEvent = null;
         this.keysDown = {};
 
+        this.start();
         return this;
     }
 
@@ -66,8 +67,11 @@ export default class KeyboardControls {
         this.keysDown[event.code]  = false;
     }
 
-    setInputInterval() {
-        this.clearInputInterval();
+    /**
+     * @returns void
+     */
+    play() {
+        this.pause();
         this.inputInterval = setInterval(() => {
             requestAnimationFrame(() => {
                 if (this.isJumping) {
@@ -83,7 +87,10 @@ export default class KeyboardControls {
         }, 50);
     }
 
-    clearInputInterval() {
+    /**
+     * @returns void
+     */
+    pause() {
         clearInterval(this.inputInterval);
     }
 
@@ -91,7 +98,7 @@ export default class KeyboardControls {
      * @returns void
      */
     start() {
-        this.setInputInterval();
+        this.play();
         document.removeEventListener('keydown', this.keyDownEvent);
         document.removeEventListener('keyup', this.keyUpEvent);
         document.addEventListener('keydown', this.keyDownEvent = (event) => this.keydownListener(event));
@@ -102,7 +109,7 @@ export default class KeyboardControls {
      * @returns void
      */
     destroy() {
-        this.clearInputInterval();
+        this.pause();
         document.removeEventListener('keydown', this.keyDownEvent);
         document.removeEventListener('keyup', this.keyUpEvent);
         delete this;

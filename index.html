@@ -73,12 +73,11 @@
         import KeyboardControls from "./scripts/KeyboardControls";
         const character = new AnimatedCharacter(document.getElementById('characterMount'));
         const keyboardControls = new KeyboardControls(character);
-        keyboardControls.start();
 
         ['mousedown', 'touchstart'].forEach((eventName) => {
             document.addEventListener(eventName, (event) => {
                 const element = event.target;
-                keyboardControls.clearInputInterval();
+                keyboardControls.pause();
 
                 if(element.matches('#walkForwardButton')) {
                     character.walk(false);
@@ -112,7 +111,7 @@
 
         ['mouseup', 'touchend', 'touchcancel'].forEach((eventName) => {
             document.addEventListener(eventName, () => {
-                keyboardControls.setInputInterval();
+                keyboardControls.play();
             });
         });
     </script>
