@@ -1,56 +1,78 @@
+@mixin defaultClothingAttachment {
+  content: '';
+  position:absolute;
+  top:-50%;
+  left:-50%;
+  height:200%;
+  width:200%;
+  background-size:100% 100%;
+  background-repeat:no-repeat;
+  background-position:center;
+}
+
+html {
+  --Face: url(../assets/face/face3.png);
+  --Hair: url(../assets/hair/spiky-1.png);
+  --Shirt: url(../assets/clothing/shirts/shirt-gray-torso.png);
+  --SleeveUpper: url(../assets/clothing/shirts/shirt-gray-sleeve.png);
+  --Waist: url(../assets/clothing/pants/pantwaist-jeans-blue.png);
+  --PantLegUpper: url(../assets/clothing/pants/pantleg-jeans-blue.png);
+  --PantLegLower: url(../assets/clothing/pants/pantleg-jeans-blue.png);
+  --Shoes: url(../assets/clothing/shoes/shoe-boots-1.png);
+}
+
 .character {
   .head, .thigh, .calf, .knee, .pelvis, .hips, .torso, .bicep, .foot {
-    &:before, &:after {
-      content: '';
-      position:absolute;
-      top:-50%;
-      left:-50%;
-      height:200%;
-      width:200%;
-      background-size:100% 100%;
-      background-repeat:no-repeat;
-      background-position:center;
+    &:after {
+      @include defaultClothingAttachment();
     }
   }
 
   .head {
     &:before {
-      background-image:url(../assets/hair/spiky-1.png);
+      @include defaultClothingAttachment();
+      background-image:var(--Hair);
       z-index:1;
     }
     &:after {
-      background-image:url(../assets/face/face3.png);
+      background-image:var(--Face);
       z-index:2;
     }
   }
 
   .torso {
     &:after {
-      background-image:url(../assets/clothing/shirts/shirt-gray-torso.png);
+      background-image:var(--Shirt);
     }
   }
 
   .bicep {
     &:after {
-      background-image:url(../assets/clothing/shirts/shirt-gray-sleeve.png);
+      background-image:var(--SleeveUpper);
     }
   }
 
   .foot {
     &:after {
-      background-image:url(../assets/clothing/shoes/shoe-boots-1.png);
+      background-image:var(--Shoes);
     }
   }
 
   .hips {
     &:after {
-      background-image:url(../assets/clothing/pants/pantwaist-jeans-blue.png);
+      background-image:var(--Waist);
     }
   }
 
-  .thigh, .calf {
+  .thigh {
     &:after {
-      background-image:url(../assets/clothing/pants/pantleg-jeans-blue.png);
+      background-image:var(--PantLegUpper);
+    }
+  }
+
+  .calf {
+    &:after {
+      background-image:var(--PantLegLower);
     }
   }
 }

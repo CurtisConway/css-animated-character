@@ -1,5 +1,15 @@
 export default class AnimatedCharacter {
     /**
+     * @static
+     * @returns Object
+     */
+    static AnimationStates = Object.freeze({
+        Idle: 0,
+        Walk: 1,
+        Jump: 2,
+    });
+
+    /**
      * @param {Element} selector
      * @returns AnimatedCharacter
      */
@@ -112,9 +122,11 @@ export default class AnimatedCharacter {
      * character skeleton
      */
     static CharacterSkeleton() {
-        return `<div class="character idle">
+        return `<div class="character">
             <div class="frame">
                 <div class="body">
+                    <div class="head" data-hair="https://via.placehold.it/200x200"></div>
+                    <div class="torso"></div>
                     <div class="arm left">
                         <div class="bicep">
                             <div class="shoulder"></div>
@@ -133,9 +145,6 @@ export default class AnimatedCharacter {
                             <div class="hand"></div>
                         </div>
                     </div>
-                    <div class="torso">
-                    </div>
-                    <div class="head"></div>
                     <div class="waist">
                         <div class="hips"></div>
                         <div class="leg left">
@@ -163,14 +172,4 @@ export default class AnimatedCharacter {
             </div>
         </div>`;
     }
-
-    /**
-     * @static
-     * @returns Object
-     */
-    static AnimationStates = Object.freeze({
-        Idle: 0,
-        Walk: 1,
-        Jump: 2,
-    });
 }
