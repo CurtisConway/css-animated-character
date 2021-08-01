@@ -301,6 +301,7 @@ $jump: (
       }
 
       #{$part} {
+        animation-duration:1s;
         animation-name:idle-#{$i};
       }
     }
@@ -323,8 +324,6 @@ $jump: (
       #{$part} {
         animation-direction: reverse;
         animation-duration: 1.5s;
-        animation-iteration-count: infinite;
-        animation-timing-function:linear;
         animation-name:walk-#{$i};
       }
     }
@@ -346,8 +345,6 @@ $jump: (
 
       #{$part} {
         animation-duration: 1s;
-        animation-timing-function:linear;
-        animation-iteration-count: infinite;
         animation-name:jump-#{$i};
       }
     }

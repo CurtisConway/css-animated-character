@@ -17,12 +17,10 @@
     }
   }
 
-  * {
-    transition:transform .5s linear;
+  .head, .body, .arm, .forearm, .leg, .calf, .foot {
     will-change:transform;
-    animation-fill-mode: forwards;
-    animation-duration:1s;
     animation-iteration-count:infinite;
+    animation-timing-function:linear;
     box-sizing:border-box;
   }
 
