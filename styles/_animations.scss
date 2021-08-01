@@ -175,7 +175,7 @@ $jump: (
     ),
     '.arm.left': (
           rotate(30deg),
-          rotate(30deg),
+          rotate(80deg),
           rotate(80deg),
           rotate(-150deg),
           rotate(-90deg),
@@ -337,10 +337,10 @@ $jump: (
       $y: 0;
       @keyframes jump-#{$i} {
         @each $keyframe in $keyframes {
-          $y: $y + 1;
           #{math.div($y, (length($keyframes) - 1)) * 100}% {
             transform: $keyframe;
           }
+          $y: $y + 1;
         }
       }
 
