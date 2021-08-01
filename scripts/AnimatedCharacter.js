@@ -20,8 +20,10 @@ export default class AnimatedCharacter {
         this.backwards = false;
         this.animationState = AnimatedCharacter.AnimationStates.Idle;
         this.nextAnimation = AnimatedCharacter.AnimationStates.Idle;
+        this.shadow = null;
 
         this.renderCharacter();
+        this.renderShadow();
         this.idle();
         return this;
     }
@@ -64,6 +66,13 @@ export default class AnimatedCharacter {
     renderCharacter() {
         this.node.innerHTML = AnimatedCharacter.CharacterSkeleton();
         this.character = this.node.children[0];
+    }
+
+    renderShadow() {
+        this.shadow = document.createElement('div');
+        this.shadow.classList.add('shadow');
+        this.character.appendChild(this.shadow);
+        this.shadow.innerHTML = AnimatedCharacter.CharacterSkeleton();
     }
 
     /**
