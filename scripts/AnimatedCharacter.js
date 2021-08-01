@@ -3,11 +3,13 @@ export default class AnimatedCharacter {
      * @static
      * @returns Object
      */
-    static AnimationStates = Object.freeze({
-        Idle: 0,
-        Walk: 1,
-        Jump: 2,
-    });
+    static get AnimationStates() {
+        return Object.freeze({
+            Idle: 0,
+            Walk: 1,
+            Jump: 2,
+        });
+    }
 
     /**
      * @param {Element} selector
