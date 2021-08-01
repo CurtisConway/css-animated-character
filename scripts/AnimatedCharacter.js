@@ -125,7 +125,7 @@ export default class AnimatedCharacter {
         return `<div class="character">
             <div class="frame">
                 <div class="body">
-                    <div class="head" data-hair="https://via.placehold.it/200x200"></div>
+                    <div class="head"></div>
                     <div class="torso"></div>
                     <div class="arm left">
                         <div class="bicep">
