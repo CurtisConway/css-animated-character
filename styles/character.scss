@@ -33,7 +33,7 @@
     bottom:0;
     right:0;
     transform:skew(50deg) scale(.8, .3);
-    filter:brightness(0);
+    filter:brightness(0) blur(15px);
     transform-origin:bottom center;
     transition:none;
     z-index:-1;
