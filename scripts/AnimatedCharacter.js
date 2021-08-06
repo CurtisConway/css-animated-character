@@ -1,93 +1,107 @@
 export default class AnimatedCharacter {
+
     /**
      * @static
-     * @returns Object
+     * @readonly
+     * @enum {String}
      */
     static get AnimationStates() {
         return Object.freeze({
-            Idle: 0,
-            Walk: 1,
-            Jump: 2,
+            Idle: 'idle',
+            Walk: 'walk',
+            Jump: 'jump',
         });
     }
 
     /**
-     * @param {Element} selector
-     * @returns AnimatedCharacter
+     * @static
+     * @readonly
+     * @enum {String}
      */
-    constructor(selector) {
-        this.node = selector;
+    static get EventTypes() {
+        return Object.freeze({
+            StateChange: 'state',
+        });
+    }
+
+    /**
+     * @constructor
+     * @param {Element} node
+     * @returns {AnimatedCharacter}
+     */
+    constructor(node) {
+        this.node = node;
         this.backwards = false;
         this.animationState = AnimatedCharacter.AnimationStates.Idle;
         this.nextAnimation = AnimatedCharacter.AnimationStates.Idle;
-        this.shadow = null;
 
         this.renderCharacter();
-        this.renderShadow();
         this.idle();
         return this;
     }
 
     /**
-     * @returns Boolean
+     * @readonly
+     * @returns {Boolean}
      */
     get isIdle() {
         return this.animationState === AnimatedCharacter.AnimationStates.Idle;
     }
 
     /**
-     * @returns Boolean
+     * @readonly
+     * @returns {Boolean}
      */
     get isWalking() {
         return this.animationState === AnimatedCharacter.AnimationStates.Walk;
     }
 
     /**
-     * @returns Boolean
+     * @readonly
+     * @returns {Boolean}
      */
     get isJumping() {
         return this.animationState === AnimatedCharacter.AnimationStates.Jump;
     }
 
     /**
-     * @returns Boolean
+     * @readonly
+     * @returns {Boolean}
      */
     get isMoving() {
         return this.isWalking || this.isJumping;
     }
 
+    /**
+     * @readonly
+     * @returns {Boolean}
+     */
     get isWaiting() {
         return this.isJumping;
     }
 
     /**
-     * @returns Boolean
+     * @returns {void}
      */
     renderCharacter() {
         this.node.innerHTML = AnimatedCharacter.CharacterSkeleton();
         this.character = this.node.children[0];
     }
 
-    renderShadow() {
-        this.shadow = document.createElement('div');
-        this.shadow.classList.add('shadow');
-        this.character.appendChild(this.shadow);
-        this.shadow.innerHTML = AnimatedCharacter.CharacterSkeleton();
-    }
-
     /**
-     * @param {AnimationStates|Number} state
+     * @param {String} state
      * @param {Boolean} queueAnimation
-     * @returns AnimationStates|Number
+     * @returns {String}
      */
     setAnimationState(state = AnimatedCharacter.AnimationStates.Idle, queueAnimation = false) {
+        const oldState = this.animationState;
         if (queueAnimation) {
             this.nextAnimation = state;
             return this.nextAnimation;
         }
         this.animationState = state;
         requestAnimationFrame(() => {
-            this.character.setAttribute('data-animation', String(this.animationState));
+            this.character.setAttribute('data-animation', this.animationState);
 
             if (this.backwards) {
                 this.character.classList.add('backwards');
@@ -95,12 +109,15 @@ export default class AnimatedCharacter {
                 this.character.classList.remove('backwards');
             }
 
+            if(oldState !== this.animationState) {
+                this.animationChangeEvent(oldState, this.animationState);
+            }
             return this.animationState;
         });
     }
 
     /**
-     * @returns void
+     * @returns {void}
      */
     idle() {
         this.setAnimationState(AnimatedCharacter.AnimationStates.Idle, this.isWaiting);
@@ -108,7 +125,7 @@ export default class AnimatedCharacter {
 
     /**
      * @param {Boolean} backwards
-     * @returns void
+     * @returns {void}
      */
     walk(backwards = false) {
         this.backwards = backwards;
@@ -116,15 +133,33 @@ export default class AnimatedCharacter {
     }
 
     /**
-     * @returns void
+     * @returns {void}
      */
     jump() {
         if(this.isWaiting) return;
+        let handler;
         this.nextAnimation = this.animationState;
         this.setAnimationState(AnimatedCharacter.AnimationStates.Jump);
-        setTimeout(() => {
+        this.character.addEventListener('animationiteration', handler = () => {
             this.setAnimationState(this.nextAnimation, false);
-        }, 1000);
+            this.character.removeEventListener('animationiteration', handler);
+        });
+    }
+
+    /**
+     * @param {String} old
+     * @param {String} current
+     * @returns {void}
+     */
+    animationChangeEvent(old, current) {
+        const event = new CustomEvent(AnimatedCharacter.EventTypes.StateChange, {
+            detail: {
+                old,
+                current,
+                character: this,
+            }
+        });
+        this.node.dispatchEvent(event);
     }
 
     /**
@@ -132,7 +167,7 @@ export default class AnimatedCharacter {
      * @returns String - A template string representing the HTML structure of the
      * character skeleton
      */
-    static CharacterSkeleton() {
+    static CharacterSkeleton(shadow = true) {
         return `<div class="character">
             <div class="frame">
                 <div class="body">
@@ -181,6 +216,7 @@ export default class AnimatedCharacter {
                     </div>
                 </div>
             </div>
+            ${shadow ? `<div class="shadow">${AnimatedCharacter.CharacterSkeleton(false)}</div>` : ``}
         </div>`;
     }
 }
