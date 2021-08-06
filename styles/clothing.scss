@@ -14,11 +14,11 @@ html {
   --SkinColor: yellow;
   --Face: url(../assets/face/face3.png);
   --Hair: url(../assets/hair/spiky-1.png);
-  --Shirt: url(../assets/clothing/shirts/shirt-gray-torso.png);
-  --SleeveUpper: url(../assets/clothing/shirts/shirt-gray-sleeve.png);
-  --Waist: url(../assets/clothing/pants/pantwaist-jeans-blue.png);
-  --PantLegUpper: url(../assets/clothing/pants/pantleg-jeans-blue.png);
-  --PantLegLower: url(../assets/clothing/pants/pantleg-jeans-blue.png);
+  --Shirt: url(../assets/clothing/shirts/shirt-white-torso.png);
+  --SleeveUpper: url(../assets/clothing/shirts/shirt-gray-sleeve-2.png);
+  --Waist: url(../assets/clothing/pants/pantwaist-jeans-blue-2.png);
+  --PantLegUpper: url(../assets/clothing/pants/pantleg-jeans-blue-top.png);
+  --PantLegLower: url(../assets/clothing/pants/pantleg-jeans-blue-2.png);
   --Shoes: url(../assets/clothing/shoes/shoe-boots-1.png);
 }
 
@@ -29,9 +29,9 @@ html {
     }
   }
 
-  .torso, .hips {
-    background-color: #f2f2f2;
-  }
+  //.torso, .hips {
+  //  background-color: #f2f2f2;
+  //}
 
   .head, .bicep, .forearm, .hand, .elbow, .shoulder, .thigh, .pelvis, .calf, .knee, .ankle {
     background-color: var(--SkinColor);
@@ -82,6 +82,7 @@ html {
   .calf {
     &:after {
       background-image:var(--PantLegLower);
+      z-index:5;
     }
   }
 }
