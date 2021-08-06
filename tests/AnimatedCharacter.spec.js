@@ -74,4 +74,14 @@ describe('AnimatedCharacter', () => {
         character.node.addEventListener(AnimatedCharacter.EventTypes.StateChange, handler);
         character.jump();
     });
+
+    it('queues an animation if it is waiting', (done) => {
+        character.jump();
+        character.walk();
+        requestAnimationFrame(() => {
+            expect(character.animationState).toBe(AnimatedCharacter.AnimationStates.Jump);
+            expect(character.nextAnimation).toBe(AnimatedCharacter.AnimationStates.Walk);
+            done();
+        });
+    });
 });

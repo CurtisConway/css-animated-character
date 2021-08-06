@@ -137,13 +137,11 @@ export default class AnimatedCharacter {
      */
     jump() {
         if(this.isWaiting) return;
-        let handler;
         this.nextAnimation = this.animationState;
         this.setAnimationState(AnimatedCharacter.AnimationStates.Jump);
-        this.character.addEventListener('animationiteration', handler = () => {
+        setTimeout(() => {
             this.setAnimationState(this.nextAnimation, false);
-            this.character.removeEventListener('animationiteration', handler);
-        });
+        }, 1000);
     }
 
     /**
