@@ -4,7 +4,7 @@
     "start": "parcel serve ./index.html",
     "build": "parcel build ./index.html",
     "test": "jest",
-    "coveralls": "jest --coverage"
+    "coveralls": "jest --coverage && cat ./tests/coverage/lcov.info | coveralls"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
