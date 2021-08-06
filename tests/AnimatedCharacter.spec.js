@@ -35,6 +35,7 @@ describe('AnimatedCharacter', () => {
             expect(character.animationState).toBe(AnimatedCharacter.AnimationStates.Walk);
             expect(character.character.dataset['animation']).toBe(AnimatedCharacter.AnimationStates.Walk);
             expect(character.isWalking).toBe(true);
+            expect(character.isMoving).toBe(true);
             done();
         });
     });
@@ -54,7 +55,9 @@ describe('AnimatedCharacter', () => {
         requestAnimationFrame(() => {
             expect(character.animationState).toBe(AnimatedCharacter.AnimationStates.Jump);
             expect(character.character.dataset['animation']).toBe(AnimatedCharacter.AnimationStates.Jump);
+            expect(character.isWaiting).toBe(true);
             expect(character.isJumping).toBe(true);
+            expect(character.isMoving).toBe(true);
             done();
         });
     });
