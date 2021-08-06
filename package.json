@@ -3,7 +3,8 @@
     "prebuild": "rm -rf dist/*.png;rm -rf dist/*.js;rm -rf dist/*.css;rm -rf dist/*.html;rm -rf dist/*.map",
     "start": "parcel serve ./index.html",
     "build": "parcel build ./index.html",
-    "test": "jest"
+    "test": "jest",
+    "coveralls": "jest --coverage"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
