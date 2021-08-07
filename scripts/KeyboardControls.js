@@ -84,7 +84,7 @@ export default class KeyboardControls {
                     }
                 }
             });
-        }, 50);
+        }, 600);
     }
 
     /**
