@@ -75,50 +75,52 @@
         const character = new AnimatedCharacter(document.getElementById('characterMount'));
         const keyboardControls = new KeyboardControls(character);
 
-        character.node.addEventListener(AnimatedCharacter.EventTypes.StateChange, (event) => {
-           console.log(event.detail.current);
-        });
+        window.onload = function() {
+            character.node.addEventListener(AnimatedCharacter.EventTypes.StateChange, (event) => {
+                console.log(event.detail.current);
+            });
 
-        ['mousedown', 'touchstart'].forEach((eventName) => {
-            document.addEventListener(eventName, (event) => {
+            ['mousedown', 'touchstart'].forEach((eventName) => {
+                document.addEventListener(eventName, (event) => {
+                    const element = event.target;
+                    keyboardControls.pause();
+
+                    if(element.matches('#walkForwardButton')) {
+                        character.walk(false);
+                    }
+
+                    if(element.matches('#jumpButton')) {
+                        character.jump();
+                    }
+
+                    if(element.matches('#idleButton')) {
+                        character.idle();
+                    }
+
+                    if(element.matches('#walkBackwardButton')) {
+                        character.walk(true);
+                    }
+                });
+            });
+
+            document.addEventListener('contextmenu', (event) => {
                 const element = event.target;
-                keyboardControls.pause();
-
-                if(element.matches('#walkForwardButton')) {
-                    character.walk(false);
-                }
-
-                if(element.matches('#jumpButton')) {
-                    character.jump();
-                }
-
-                if(element.matches('#idleButton')) {
-                    character.idle();
-                }
-
-                if(element.matches('#walkBackwardButton')) {
-                    character.walk(true);
+                if (
+                    element.matches('#walkForwardButton') ||
+                    element.matches('#jumpButton') ||
+                    element.matches('#idleButton') ||
+                    element.matches('#walkBackwardButton')
+                ) {
+                    event.preventDefault();
                 }
             });
-        });
 
-        document.addEventListener('contextmenu', (event) => {
-            const element = event.target;
-            if (
-                element.matches('#walkForwardButton') ||
-                element.matches('#jumpButton') ||
-                element.matches('#idleButton') ||
-                element.matches('#walkBackwardButton')
-            ) {
-                event.preventDefault();
-            }
-        });
-
-        ['mouseup', 'touchend', 'touchcancel'].forEach((eventName) => {
-            document.addEventListener(eventName, () => {
-                keyboardControls.play();
+            ['mouseup', 'touchend', 'touchcancel'].forEach((eventName) => {
+                document.addEventListener(eventName, () => {
+                    keyboardControls.play();
+                });
             });
-        });
+        };
     </script>
 </body>
 </html>
