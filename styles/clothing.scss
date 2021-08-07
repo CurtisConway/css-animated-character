@@ -23,29 +23,31 @@ html {
 }
 
 .character {
-  .head, .thigh, .calf, .knee, .pelvis, .hips, .torso, .bicep, .foot {
-    &:after {
+  .head, .thigh, .calf, .knee, .pelvis, .hips, .torso, .bicep, .foot, .forearm, .hand {
+    &:before, &:after {
       @include defaultClothingAttachment();
+    }
+
+    &:before {
+      z-index:1;
+    }
+
+    &:after {
+      z-index:2;
     }
   }
 
-  //.torso, .hips {
-  //  background-color: #f2f2f2;
-  //}
-
-  .head, .bicep, .forearm, .hand, .elbow, .shoulder, .thigh, .pelvis, .calf, .knee, .ankle {
-    background-color: var(--SkinColor);
+  .head {
+    background-image:url(../assets/skin/head.png);
+    background-size:cover;
   }
 
   .head {
     &:before {
-      @include defaultClothingAttachment();
       background-image:var(--Hair);
-      z-index:1;
     }
     &:after {
       background-image:var(--Face);
-      z-index:2;
     }
   }
 
@@ -56,8 +58,23 @@ html {
   }
 
   .bicep {
+    &:before {
+      background-image:url(../assets/skin/arm-leg-skin-wide.png);
+    }
     &:after {
       background-image:var(--SleeveUpper);
+    }
+  }
+
+  .forearm {
+    &:before {
+      background-image:url(../assets/skin/arm-leg-skin.png);
+    }
+  }
+
+  .hand {
+    &:before {
+      background-image:url(../assets/skin/hand.png);
     }
   }
 
@@ -74,12 +91,18 @@ html {
   }
 
   .thigh {
+    &:before {
+      background-image:url(../assets/skin/arm-leg-skin.png);
+    }
     &:after {
       background-image:var(--PantLegUpper);
     }
   }
 
   .calf {
+    &:before {
+      background-image:url(../assets/skin/arm-leg-skin.png);
+    }
     &:after {
       background-image:var(--PantLegLower);
       z-index:5;
