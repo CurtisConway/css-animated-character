@@ -130,9 +130,9 @@ export default class AnimatedCharacter {
      */
     walk(backwards = false) {
         if (this.backwards !== backwards) {
-            this.directionChangeEvent();
+            this.backwards = backwards;
+            this.directionChangeEvent(backwards);
         }
-        this.backwards = backwards;
         this.setAnimationState(AnimatedCharacter.AnimationStates.Walk, this.isWaiting);
     }
 
@@ -167,10 +167,10 @@ export default class AnimatedCharacter {
     /**
      * @returns {void}
      */
-    directionChangeEvent() {
+    directionChangeEvent(backwards) {
         const event = new CustomEvent(AnimatedCharacter.EventTypes.DirectionChange, {
             detail: {
-                backwards: this.backwards,
+                backwards,
                 character: this,
             }
         });
