@@ -21,6 +21,7 @@ export default class AnimatedCharacter {
     static get EventTypes() {
         return Object.freeze({
             StateChange: 'state',
+            DirectionChange: 'direction',
         });
     }
 
@@ -128,6 +129,9 @@ export default class AnimatedCharacter {
      * @returns {void}
      */
     walk(backwards = false) {
+        if (this.backwards !== backwards) {
+            this.directionChangeEvent();
+        }
         this.backwards = backwards;
         this.setAnimationState(AnimatedCharacter.AnimationStates.Walk, this.isWaiting);
     }
@@ -154,6 +158,19 @@ export default class AnimatedCharacter {
             detail: {
                 old,
                 current,
+                character: this,
+            }
+        });
+        this.node.dispatchEvent(event);
+    }
+
+    /**
+     * @returns {void}
+     */
+    directionChangeEvent() {
+        const event = new CustomEvent(AnimatedCharacter.EventTypes.DirectionChange, {
+            detail: {
+                backwards: this.backwards,
                 character: this,
             }
         });
