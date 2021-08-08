@@ -1,4 +1,5 @@
 {
+  "name": "css-animated-character",
   "scripts": {
     "prebuild": "rm -rf dist/*.png;rm -rf dist/*.js;rm -rf dist/*.css;rm -rf dist/*.html;rm -rf dist/*.map",
     "start": "parcel serve ./index.html",
