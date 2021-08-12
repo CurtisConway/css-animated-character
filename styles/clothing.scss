@@ -12,14 +12,14 @@
 
 html {
   --SkinColor: yellow;
-  --Face: url(../assets/face/face3.png);
-  --Hair: url(../assets/hair/spiky-1.png);
-  --Shirt: url(../assets/clothing/shirts/shirt-white-torso.png);
-  --SleeveUpper: url(../assets/clothing/shirts/shirt-gray-sleeve-2.png);
-  --Waist: url(../assets/clothing/pants/pantwaist-jeans-blue-2.png);
-  --PantLegUpper: url(../assets/clothing/pants/pantleg-jeans-blue-top.png);
-  --PantLegLower: url(../assets/clothing/pants/pantleg-jeans-blue-2.png);
-  --Shoes: url(../assets/clothing/shoes/shoe-boots-1.png);
+  --Face: url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628793222/animation/character/face/face3_rcl1ym.png);
+  --Hair: url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628793265/animation/character/hair/spiky-1_k0f5y7.png);
+  --Shirt: url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628793289/animation/character/clothing/shirts/shirt-white-torso_odt56x.png);
+  --SleeveUpper: url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628793289/animation/character/clothing/shirts/shirt-gray-sleeve-2_pztpnt.png);
+  --Waist: url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628793288/animation/character/clothing/pants/Waist_Template_htfwv2.psd);
+  --PantLegUpper: url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628793287/animation/character/clothing/pants/pantleg-jeans-blue-top_ruomg4.png);
+  --PantLegLower: url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628793287/animation/character/clothing/pants/pantleg-jeans-blue-2_y9grcc.png);
+  --Shoes: url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628793289/animation/character/clothing/shoes/shoe-boots-1_obnr5h.png);
 }
 
 .character {
@@ -38,7 +38,7 @@ html {
   }
 
   .head {
-    background-image:url(../assets/skin/head.png);
+    background-image:url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628793117/animation/character/skin/head_nfmdte.png);
     background-size:cover;
   }
 
@@ -59,7 +59,7 @@ html {
 
   .bicep {
     &:before {
-      background-image:url(../assets/skin/arm-leg-skin-wide.png);
+      background-image:url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628793117/animation/character/skin/arm-leg-skin-wide_tyumtd.png);
     }
     &:after {
       background-image:var(--SleeveUpper);
@@ -68,13 +68,13 @@ html {
 
   .forearm {
     &:before {
-      background-image:url(../assets/skin/arm-leg-skin.png);
+      background-image:url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628793117/animation/character/skin/arm-leg-skin_zbsw2q.png);
     }
   }
 
   .hand {
     &:before {
-      background-image:url(../assets/skin/hand.png);
+      background-image:url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628793117/animation/character/skin/hand_fvd6kr.png);
     }
   }
 
@@ -92,7 +92,7 @@ html {
 
   .thigh {
     &:before {
-      background-image:url(../assets/skin/arm-leg-skin.png);
+      background-image:url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628793117/animation/character/skin/arm-leg-skin_zbsw2q.png);
     }
     &:after {
       background-image:var(--PantLegUpper);
@@ -101,7 +101,7 @@ html {
 
   .calf {
     &:before {
-      background-image:url(../assets/skin/arm-leg-skin.png);
+      background-image:url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628793117/animation/character/skin/arm-leg-skin_zbsw2q.png);
     }
     &:after {
       background-image:var(--PantLegLower);
