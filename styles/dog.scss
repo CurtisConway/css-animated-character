@@ -1,5 +1,18 @@
 @import 'animations-dog.scss';
 
+html {
+  --dogHead:url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628947288/animation/character/dog/head_vzwydk.png);
+  --dogNeck:url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628947288/animation/character/dog/neck_ehhcmq.png);
+  --dogBodyFront:url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628947288/animation/character/dog/body-front_tcrcbs.png);
+  --dogBodyRear:url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628947289/animation/character/dog/body-rear_oygemw.png);
+  --dogShoulderFront:url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628947288/animation/character/dog/shoulder-front_gcf7pi.png);
+  --dogShoulderRear:url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628947288/animation/character/dog/shoulder-back_xwkjrf.png);
+  --dogLegTop:url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628947288/animation/character/dog/leg-front-upper_kpzzi5.png);
+  --dogLegBottom:url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628947288/animation/character/dog/leg-front-lower_fxkchs.png);
+  --dogFoot:url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628947289/animation/character/dog/foot_slt3on.png);
+  --dogTail:url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628947288/animation/character/dog/tail_wfddw2.png);
+}
+
 .dog {
   max-width:100%;
   width:550px;
@@ -90,7 +103,7 @@
 
             &:after {
               content: '';
-              background-image:url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628943149/animation/character/dog/leg-front-upper_q9mzgs.png);
+              background-image:var(--dogLegTop);
               background-size:100% 100%;
               position:absolute;
               top:50%;
@@ -112,7 +125,7 @@
 
             &:after {
               content: '';
-              background-image:url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628943149/animation/character/dog/leg-front-lower_djcj4n.png);
+              background-image:var(--dogLegBottom);
               background-size:100% 100%;
               position:absolute;
               top:50%;
@@ -133,7 +146,7 @@
 
               &:after {
                 content: '';
-                background-image:url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628943149/animation/character/dog/foot_c1ovbe.png);
+                background-image:var(--dogFoot);
                 background-size:100% 100%;
                 position:absolute;
                 top:50%;
@@ -153,7 +166,7 @@
 
       &:after {
         left:80%;
-        background-image:url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628943734/animation/character/dog/body-front_qm0hbv.png);
+        background-image:var(--dogBodyFront);
       }
 
       .neck {
@@ -167,7 +180,7 @@
 
         &:after {
           content: '';
-          background-image:url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628943149/animation/character/dog/neck_feza4t.png);
+          background-image:var(--dogNeck);
           background-size:100% 100%;
           position:absolute;
           top:50%;
@@ -182,13 +195,15 @@
           height:110%;
           width:110%;
           bottom:55%;
-          left:-5%;
+          left:0;
           border-radius:50%;
           z-index:2;
+          transform-origin:center center;
+          //display:none;
 
           &:after {
             content: '';
-            background-image:url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628943149/animation/character/dog/head_bd5hrg.png);
+            background-image:var(--dogHead);
             background-size:100% 100%;
             position:absolute;
             top:50%;
@@ -205,7 +220,7 @@
 
         &:after {
           content: '';
-          background-image:url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628943149/animation/character/dog/shoulder-front_mixrpl.png);
+          background-image:var(--dogShoulderFront);
           background-size:100% 100%;
           position:absolute;
           top:50%;
@@ -228,7 +243,7 @@
 
       &:after {
         left:10%;
-        background-image:url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628943149/animation/character/dog/body-rear_mrlegs.png);
+        background-image:var(--dogBodyRear);
       }
 
       .shoulder {
@@ -236,7 +251,7 @@
 
         &:after {
           content: '';
-          background-image:url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628943734/animation/character/dog/shoulder-back_jklw1f.png);
+          background-image:var(--dogShoulderRear);
           background-size:100% 100%;
           position:absolute;
           top:50%;
@@ -275,7 +290,7 @@
 
           &:after {
             content: '';
-            background-image:url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628943149/animation/character/dog/tail_mn0usd.png);
+            background-image:var(--dogTail);
             background-size:100% 100%;
             position:absolute;
             top:50%;

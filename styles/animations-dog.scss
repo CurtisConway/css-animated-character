@@ -12,9 +12,9 @@ $idle: (
       translate(0,0) rotate(20deg),
   ),
   '.head': (
-      translate(0,0) rotate(0deg),
-      translate(0,0) rotate(0deg),
-      translate(0,0) rotate(0deg),
+      translate(0,0) rotate(-20deg),
+      translate(0,0) rotate(-15deg),
+      translate(0,0) rotate(-20deg),
   ),
   '.torso .shoulder.left': (
       translate(0,0) rotate(5deg),
