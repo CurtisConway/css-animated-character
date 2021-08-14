@@ -280,7 +280,6 @@ $walk: (
       }
 
       #{$part} {
-        animation-direction: reverse;
         animation-duration: 1.25s;
         animation-name:dog-idle-#{$i};
       }
@@ -302,7 +301,6 @@ $walk: (
       }
 
       #{$part} {
-        animation-direction: reverse;
         animation-duration: 1.25s;
         animation-name:dog-walk-#{$i};
       }
