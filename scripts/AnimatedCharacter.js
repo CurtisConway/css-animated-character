@@ -181,7 +181,7 @@ export default class AnimatedCharacter {
      * @returns String - A template string representing the HTML structure of the
      * character skeleton
      */
-    static CharacterSkeleton(shadow = true) {
+    static CharacterSkeleton() {
         return `<div class="character">
             <div class="frame">
                 <div class="body">
@@ -230,7 +230,6 @@ export default class AnimatedCharacter {
                     </div>
                 </div>
             </div>
-            ${shadow ? `<div class="shadow">${AnimatedCharacter.CharacterSkeleton(false)}</div>` : ``}
         </div>`;
     }
 }
