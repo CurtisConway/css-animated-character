@@ -8,19 +8,11 @@
     <title>CSS Animated Character</title>
     <link rel="stylesheet" href="styles/character.scss">
     <style>
-        .character {
-            /*background-image:url(jumping.jpg);*/
-            background-size:410%;
-            background-position:106% -5%;
-            background-repeat:no-repeat;
+        .dog  * {
+            /*animation-play-state:paused;*/
+            animation-direction: normal!important;
         }
-        /*.character * {*/
-        /*    opacity:.95;*/
-        /*}*/
-        /*.character.jump  * {*/
-        /*    !*animation-play-state:paused;*!*/
-        /*    animation-direction: normal!important;*/
-        /*}*/
+
         #characterMount {
             max-width:100%;
         }
@@ -71,9 +63,10 @@
     </div>
     <script type="module">
         import AnimatedCharacter from "./scripts/AnimatedCharacter";
-        import KeyboardControls from "./scripts/KeyboardControls";
-        const character = new AnimatedCharacter(document.getElementById('characterMount'));
-        const keyboardControls = new KeyboardControls(character);
+        import AnimatedDogCharacter from "./scripts/AnimatedDogCharacter";
+        const character = new AnimatedDogCharacter(document.getElementById('characterMount'));
+
+        character.walk();
 
         window.onload = function() {
             character.node.addEventListener(AnimatedCharacter.EventTypes.StateChange, (event) => {
@@ -83,7 +76,6 @@
             ['mousedown', 'touchstart'].forEach((eventName) => {
                 document.addEventListener(eventName, (event) => {
                     const element = event.target;
-                    keyboardControls.pause();
 
                     if(element.matches('#walkForwardButton')) {
                         character.walk(false);
@@ -113,12 +105,6 @@
                 ) {
                     event.preventDefault();
                 }
-            });
-
-            ['mouseup', 'touchend', 'touchcancel'].forEach((eventName) => {
-                document.addEventListener(eventName, () => {
-                    keyboardControls.play();
-                });
             });
         };
     </script>

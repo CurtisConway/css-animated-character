@@ -38,7 +38,6 @@ export default class AnimatedCharacter {
 
         this.renderCharacter();
         this.idle();
-        return this;
     }
 
     /**

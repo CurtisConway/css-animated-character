@@ -1,0 +1,311 @@
+@use "sass:math";
+
+$idle: (
+  '.body': (
+      translate(0,0) rotate(.5deg),
+      translate(1%,2%) rotate(0deg),
+      translate(0,0) rotate(0.5deg),
+  ),
+  '.neck': (
+      translate(0,0) rotate(20deg),
+      translate(0,0) rotate(15deg),
+      translate(0,0) rotate(20deg),
+  ),
+  '.head': (
+      translate(0,0) rotate(0deg),
+      translate(0,0) rotate(0deg),
+      translate(0,0) rotate(0deg),
+  ),
+  '.torso .shoulder.left': (
+      translate(0,0) rotate(5deg),
+      translate(0,0) rotate(8deg),
+      translate(0,0) rotate(5deg),
+  ),
+  '.torso .shoulder.right': (
+      translate(0,0) rotate(5deg),
+      translate(0,0) rotate(8deg),
+      translate(0,0) rotate(5deg),
+  ),
+  '.torso .shoulder.left .lower': (
+      translate(0,0) rotate(-10deg),
+      translate(0,0) rotate(-13deg),
+      translate(0,0) rotate(-10deg),
+  ),
+  '.torso .shoulder.right .lower': (
+      translate(0,0) rotate(-10deg),
+      translate(0,0) rotate(-13deg),
+      translate(0,0) rotate(-10deg),
+  ),
+  '.torso .shoulder.left .foot': (
+      translate(0,0) rotate(-5deg),
+      translate(0,0) rotate(-8deg),
+      translate(0,0) rotate(-5deg),
+  ),
+  '.torso .shoulder.right .foot': (
+      translate(0,0) rotate(-5deg),
+      translate(0,0) rotate(-8deg),
+      translate(0,0) rotate(-5deg),
+  ),
+  '.rear .shoulder.left': (
+      translate(0,0) rotate(30deg),
+      translate(0,0) rotate(35deg),
+      translate(0,0) rotate(30deg),
+  ),
+  '.rear .shoulder.right': (
+      translate(0,0) rotate(30deg),
+      translate(0,0) rotate(35deg),
+      translate(0,0) rotate(30deg),
+  ),
+  '.rear .shoulder.left .lower': (
+      translate(0,0) rotate(-20deg),
+      translate(0,0) rotate(-25deg),
+      translate(0,0) rotate(-20deg),
+  ),
+  '.rear .shoulder.right .lower': (
+      translate(0,0) rotate(-20deg),
+      translate(0,0) rotate(-25deg),
+      translate(0,0) rotate(-20deg),
+  ),
+  '.rear .shoulder.left .foot': (
+      translate(0,0) rotate(-5deg),
+      translate(0,0) rotate(-8deg),
+      translate(0,0) rotate(-5deg),
+  ),
+  '.rear .shoulder.right .foot': (
+      translate(0,0) rotate(-5deg),
+      translate(0,0) rotate(-8deg),
+      translate(0,0) rotate(-5deg),
+  ),
+  '.tail .section': (
+      translate(0,0) rotate(50deg),
+      translate(0,0) rotate(53deg),
+      translate(0,0) rotate(50deg),
+  ),
+);
+
+
+$walk: (
+  '.body': (
+          translate(0,-5%) rotate(3deg),
+          translate(0,-1%) rotate(2deg),
+          translate(0,-5%) rotate(3deg),
+  ),
+  '.neck': (
+          translate(0,0) rotate(50deg),
+          translate(0,0) rotate(55deg),
+          translate(0,0) rotate(50deg),
+  ),
+  '.head': (
+          translate(0,0) rotate(-50deg),
+          translate(0,0) rotate(-55deg),
+          translate(0,0) rotate(-50deg),
+  ),
+  '.torso .shoulder.left': (
+          translate(3%,3%) rotate(-10deg),
+          translate(5%,5%) rotate(0deg),
+          translate(3%,5%) rotate(15deg),
+          translate(0,3%) rotate(20deg),
+          translate(2%,-3%) rotate(5deg),
+          translate(3%,-5%) rotate(-20deg),
+          translate(5%,-2%) rotate(-40deg),
+          translate(5%,0) rotate(-30deg),
+          translate(3%,3%) rotate(-20deg),
+          translate(0,5%) rotate(-15deg),
+          translate(3%,3%) rotate(-10deg),
+  ),
+  '.torso .shoulder.left .lower': (
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(0deg),
+          translate(0,0) rotate(-10deg),
+          translate(0,0) rotate(-10deg),
+          translate(0,0) rotate(20deg),
+          translate(0,0) rotate(30deg),
+          translate(0,0) rotate(15deg),
+          translate(0,0) rotate(0deg),
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-10deg),
+          translate(0,0) rotate(-5deg),
+  ),
+  '.torso .shoulder.left .foot': (
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-5deg),
+  ),
+  '.torso .shoulder.right': (
+          translate(0,-2%) rotate(-15deg),
+          translate(3%,-5%) rotate(-35deg),
+          translate(5%,-2%) rotate(-30deg),
+          translate(3%,0%) rotate(-25deg),
+          translate(2%,2%) rotate(-15deg),
+          translate(0%,3%) rotate(-5deg),
+          translate(-2%,5%) rotate(5deg),
+          translate(-3%,5%) rotate(15deg),
+          translate(-5%,3%) rotate(25deg),
+          translate(-3%,0) rotate(-5deg),
+          translate(0, -2%) rotate(-15deg),
+  ),
+  '.torso .shoulder.right .lower': (
+          translate(0,0) rotate(60deg),
+          translate(0,0) rotate(20deg),
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-10deg),
+          translate(0,0) rotate(0deg),
+          translate(0,0) rotate(0deg),
+          translate(0,0) rotate(-10deg),
+          translate(0,0) rotate(30deg),
+          translate(0,0) rotate(60deg),
+  ),
+  '.torso .shoulder.right .foot': (
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-5deg),
+  ),
+  '.rear .shoulder.left': (
+          translate(-5%,5%) rotate(30deg),
+          translate(-3,2%) rotate(50deg),
+          translate(0,-2%) rotate(40deg),
+          translate(3%,-5%) rotate(25deg),
+          translate(5%,0) rotate(-15deg),
+          translate(2%,2%) rotate(0deg),
+          translate(0,5%) rotate(10deg),
+          translate(-3%,7%) rotate(20deg),
+          translate(-5%,7%) rotate(30deg),
+          translate(-7%,7%) rotate(40deg),
+          translate(-5%,5%) rotate(30deg),
+  ),
+  '.rear .shoulder.left .lower': (
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-40deg),
+          translate(0,0) rotate(-70deg),
+          translate(0,0) rotate(-65deg),
+          translate(0,0) rotate(-10deg),
+          translate(0,0) rotate(-15deg),
+          translate(0,0) rotate(0deg),
+          translate(0,0) rotate(-10deg),
+          translate(0,0) rotate(-15deg),
+          translate(0,0) rotate(-10deg),
+          translate(0,0) rotate(-5deg),
+  ),
+  '.rear .shoulder.left .foot': (
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-5deg),
+  ),
+  '.rear .shoulder.right': (
+          translate(3%,2%) rotate(10deg),
+          translate(0,4%) rotate(20deg),
+          translate(-3%,5%) rotate(30deg),
+          translate(-3%,5%) rotate(35deg),
+          translate(-5%,5%) rotate(40deg),
+          translate(-3%,3%) rotate(45deg),
+          translate(0%,0%) rotate(60deg),
+          translate(2%,-2%) rotate(40deg),
+          translate(5%,-5%) rotate(10deg),
+          translate(2%,-2%) rotate(-10deg),
+          translate(3%,2%) rotate(10deg),
+  ),
+  '.rear .shoulder.right .lower': (
+          translate(0,0) rotate(-45deg),
+          translate(0,0) rotate(-25deg),
+          translate(0,0) rotate(-15deg),
+          translate(0,0) rotate(-10deg),
+          translate(0,0) rotate(-10deg),
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-25deg),
+          translate(0,0) rotate(-65deg),
+          translate(0,0) rotate(-45deg),
+          translate(0,0) rotate(-10deg),
+          translate(0,0) rotate(-45deg),
+  ),
+  '.rear .shoulder.right .foot': (
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-5deg),
+          translate(0,0) rotate(-5deg),
+  ),
+  '.tail .section': (
+          translate(0,0) rotate(50deg),
+          translate(0,0) rotate(55deg),
+          translate(0,0) rotate(50deg),
+  ),
+);
+
+.dog {
+
+  &[data-animation="idle"] {
+    $i: 0;
+    @each $part, $keyframes in $idle {
+      $i: $i + 1;
+      $y: 0;
+      @keyframes dog-idle-#{$i} {
+        @each $keyframe in $keyframes {
+          #{math.div($y, (length($keyframes)) - 1) * 100}% {
+            transform: $keyframe;
+          }
+          $y: $y + 1;
+        }
+      }
+
+      #{$part} {
+        animation-direction: reverse;
+        animation-duration: 1.25s;
+        animation-name:dog-idle-#{$i};
+      }
+    }
+  }
+
+  &[data-animation="walk"] {
+    $i: 0;
+    @each $part, $keyframes in $walk {
+      $i: $i + 1;
+      $y: 0;
+      @keyframes dog-walk-#{$i} {
+        @each $keyframe in $keyframes {
+          #{math.div($y, (length($keyframes)) - 1) * 100}% {
+            transform: $keyframe;
+          }
+          $y: $y + 1;
+        }
+      }
+
+      #{$part} {
+        animation-direction: reverse;
+        animation-duration: 1.25s;
+        animation-name:dog-walk-#{$i};
+      }
+    }
+  }
+}
