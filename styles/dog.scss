@@ -1,8 +1,8 @@
 @import 'animations-dog.scss';
 
 html {
-  --dogHead:url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628947288/animation/character/dog/head_vzwydk.png);
-  --dogNeck:url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628947288/animation/character/dog/neck_ehhcmq.png);
+  --dogHead:url(https://res.cloudinary.com/dloxgdltu/image/upload/v1629005986/animation/character/dog/head_niuf5w.png);
+  --dogNeck:url(/assets/dog/neck.png);
   --dogBodyFront:url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628947288/animation/character/dog/body-front_tcrcbs.png);
   --dogBodyRear:url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628947289/animation/character/dog/body-rear_oygemw.png);
   --dogShoulderFront:url(https://res.cloudinary.com/dloxgdltu/image/upload/v1628947288/animation/character/dog/shoulder-front_gcf7pi.png);
@@ -178,6 +178,19 @@ html {
         z-index:1;
         transform-origin:bottom center;
 
+        &:before {
+          content: '';
+          background-image:url(https://res.cloudinary.com/dloxgdltu/image/upload/v1629007377/animation/character/dog/bandana_i9yqps.png);
+          background-size:100% 100%;
+          position:absolute;
+          top:50%;
+          left:50%;
+          transform:translate(-50%, -50%);
+          height:200%;
+          width:200%;
+          z-index:5;
+        }
+
         &:after {
           content: '';
           background-image:var(--dogNeck);
@@ -188,6 +201,7 @@ html {
           transform:translate(-50%, -50%);
           height:200%;
           width:200%;
+          z-index:-1;
         }
 
         .head {
@@ -228,12 +242,7 @@ html {
           transform:translate(-50%, -50%);
           height:200%;
           width:200%;
-        }
-
-        .upper {
-        }
-
-        .lower {
+          z-index:3;
         }
       }
     }
