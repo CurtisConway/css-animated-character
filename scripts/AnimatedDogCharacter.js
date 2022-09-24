@@ -27,27 +27,6 @@ export default class AnimatedDogCharacter extends AnimatedCharacter {
         return `<div class="dog">
             <div class="frame">
                 <div class="body">
-                    <div class="torso">
-                        <div class="neck">
-                            <div class="head"></div>
-                        </div>
-                        <div class="shoulder left">
-                            <div class="leg">
-                                <div class="upper"></div>
-                                <div class="lower">
-                                    <div class="foot"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="shoulder right">
-                            <div class="leg">
-                                <div class="upper"></div>
-                                <div class="lower">
-                                    <div class="foot"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="rear">
                         <div class="shoulder left">
                             <div class="leg">
@@ -71,6 +50,28 @@ export default class AnimatedDogCharacter extends AnimatedCharacter {
                                     <div class="section three">
                                         <div class="section four"></div>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="torso">
+                        <div class="neck">
+                            <div class="head"></div>
+                        </div>
+                        <div class="shoulder left">
+                            <div class="leg">
+                                <div class="upper"></div>
+                                <div class="lower">
+                                    <div class="foot"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="shoulder right">
+                            <div class="leg">
+                                <div class="upper"></div>
+                                <div class="lower">
+                                    <div class="foot"></div>
                                 </div>
                             </div>
                         </div>

@@ -10,6 +10,7 @@ export default class AnimatedCharacter {
             Idle: 'idle',
             Walk: 'walk',
             Jump: 'jump',
+            Sit: 'sit',
         });
     }
 
@@ -145,6 +146,13 @@ export default class AnimatedCharacter {
         setTimeout(() => {
             this.setAnimationState(this.nextAnimation, false);
         }, 1000);
+    }
+
+    /**
+     * @returns {void}
+     */
+    sit() {
+        this.setAnimationState(AnimatedCharacter.AnimationStates.Sit, this.isWaiting);
     }
 
     /**

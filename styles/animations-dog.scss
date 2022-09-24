@@ -263,6 +263,82 @@ $walk: (
   ),
 );
 
+
+$sit: (
+        '.body': (
+                translate(0,0) rotate(-40deg),
+                translate(0,0) rotate(-40deg),
+        ),
+        '.neck': (
+                translate(0,0) rotate(60deg),
+                translate(0,0) rotate(60deg),
+        ),
+        '.head': (
+                translate(0,0) rotate(-60deg),
+                translate(1%,0) rotate(-62deg),
+                translate(0,0) rotate(-60deg),
+        ),
+        '.torso .shoulder.left': (
+                translate(-30%,40%) rotate(40deg),
+                translate(-30%,40%) rotate(40deg),
+        ),
+        '.torso .shoulder.left .lower': (
+                translate(0,0) rotate(0deg),
+                translate(0,0) rotate(0deg),
+        ),
+        '.torso .shoulder.left .foot': (
+                translate(0,0) rotate(0deg),
+                translate(0,0) rotate(2deg),
+                translate(0,0) rotate(0deg),
+        ),
+        '.torso .shoulder.right': (
+                translate(-30%,40%) rotate(30deg),
+                translate(-30%,40%) rotate(30deg),
+        ),
+        '.torso .shoulder.right .lower': (
+                translate(0,0) rotate(0deg),
+                translate(0,0) rotate(0deg),
+        ),
+        '.torso .shoulder.right .foot': (
+                translate(0,0) rotate(0deg),
+                translate(0,0) rotate(-2deg),
+                translate(0,0) rotate(0deg),
+        ),
+        '.rear .shoulder.left': (
+                translate(0,0) rotate(-40deg),
+                translate(0,0) rotate(-40deg),
+        ),
+        '.rear .shoulder.left .lower': (
+                translate(0,0) rotate(20deg),
+                translate(0,0) rotate(20deg),
+        ),
+        '.rear .shoulder.left .foot': (
+                translate(0,0) rotate(0deg),
+                translate(0,0) rotate(-2deg),
+                translate(0,0) rotate(0deg),
+        ),
+        '.rear .shoulder.right': (
+                translate(0,0) rotate(-45deg),
+                translate(0,0) rotate(-45deg),
+        ),
+        '.rear .shoulder.right .lower': (
+                translate(0,0) rotate(10deg),
+                translate(0,0) rotate(10deg),
+        ),
+        '.rear .shoulder.right .foot': (
+                translate(0,0) rotate(0deg),
+                translate(0,0) rotate(2deg),
+                translate(0,0) rotate(0deg),
+        ),
+        '.tail .section': (
+                translate(0,0) rotate(50deg),
+                translate(0,0) rotate(55deg),
+                translate(0,0) rotate(50deg),
+                translate(0,0) rotate(55deg),
+                translate(0,0) rotate(50deg),
+        ),
+);
+
 .dog {
 
   &[data-animation="idle"] {
@@ -303,6 +379,30 @@ $walk: (
       #{$part} {
         animation-duration: 1.25s;
         animation-name:dog-walk-#{$i};
+      }
+    }
+  }
+
+  &[data-animation="sit"] {
+
+    $i: 0;
+    @each $part, $keyframes in $sit {
+      $i: $i + 1;
+      $y: 0;
+      @keyframes dog-sit-#{$i} {
+        @each $keyframe in $keyframes {
+          #{math.div($y, (length($keyframes)) - 1) * 100}% {
+            transform: $keyframe;
+          }
+          $y: $y + 1;
+        }
+      }
+
+      #{$part} {
+        animation-direction: reverse;
+        //animation-play-state: paused;
+        animation-duration: 1.25s;
+        animation-name:dog-sit-#{$i};
       }
     }
   }
